@@ -1,0 +1,27 @@
+{
+  "name": "study-buddy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klee91/StudyBuddy.git"
+  },
+  "author": "Kevin Lee, Carlton Hurdle, Patrick Powers, Ralph Manlapig",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klee91/StudyBuddy/issues"
+  },
+  "homepage": "https://github.com/klee91/StudyBuddy#readme"
+}
