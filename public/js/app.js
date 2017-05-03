@@ -1,7 +1,3 @@
-
-//<----------- Firebase script ----------->
-<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
-
 // Initialize Firebase
 //------------------------------------------------------
 var config = {
@@ -15,30 +11,63 @@ messagingSenderId: "162379515453"
 
 firebase.initializeApp(config);
 
-var database = firebase.database();
-//------------------------------------------------------
+const database = firebase.database();
+const auth = firebase.auth();
 
-//Create New Account Function
-firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-  // Error Handling
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  console.log(errorCode);
-  console.log(errorMessage);
+//-----------------------------------------------------
+
+//------------------------------ jQuery ------------------------------
+
+//login button event
+$(document).on('click','#btnLogin', function(event) {
+    event.preventDefault();
+
+    var email = $('#loginEmail').val().trim();
+    var pass = $('#loginPassword').val().trim();
+
+    //Sign In Function
+    auth.signInWithEmailAndPassword(email, password).catch(function(error) {
+    // Error Handling
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+    });
 });
 
-//Sign In Function
-firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-  // Error Handling
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  console.log(errorCode);
-  console.log(errorMessage);
+//signup button event
+$(document).on('click','#btnSignup', function(event) {
+    event.preventDefault();
+
+    //Create New Account Function
+    auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
+    // Error Handling
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log(errorCode);
+    console.log(errorMessage);
+    });
 });
 
-//Sign Out Function
-firebase.auth().signOut().then(function() {
-  console.log("user signed out");
-}).catch(function(error) {
-  console.log("Error: Sign Out " + error)
+//logout button event
+$(document).on('click','#btnLogout', function(event) {
+    event.preventDefault();
+
+    //Sign Out Function
+    auth.signOut().then(function() {
+        console.log("user signed out");
+    }).catch(function(error) {
+        console.log("Error: Sign Out " + error);
+    });
+});
+
+//add a realtime listener
+auth.onAuthStateChange(User => { 
+    if(User) {
+        console.log(User);
+        $('#btnLogout').removeClass("hide");
+    } else {
+        console.log('Not logged in');
+        $('#btnLogout').addClass("hide");
+    }
 });
