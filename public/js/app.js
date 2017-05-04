@@ -14,7 +14,7 @@ firebase.initializeApp(config);
 const database = firebase.database();
 const auth = firebase.auth();
 
-//-----------------------------------------------------
+//--------------------------------------------------------------------
 
 //------------------------------ jQuery ------------------------------
 
@@ -23,8 +23,10 @@ $(document).on('click','#btnLogin', function(event) {
     event.preventDefault();
 
     var email = $('#loginEmail').val().trim();
-    var pass = $('#loginPassword').val().trim();
+    var password = $('#loginPassword').val().trim();
 
+    database.ref().set(email).child(password)
+    
     //Sign In Function
     auth.signInWithEmailAndPassword(email, password).catch(function(error) {
     // Error Handling
@@ -41,11 +43,11 @@ $(document).on('click','#btnSignup', function(event) {
 
     //Create New Account Function
     auth.createUserWithEmailAndPassword(email, password).catch(function(error) {
-    // Error Handling
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
+        // Error Handling
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
     });
 });
 
