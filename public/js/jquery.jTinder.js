@@ -79,6 +79,12 @@
 			});
 		},
 
+		bindNew: function(element){
+            panes = $(">ul>li", element);
+            pane_count = panes.length;
+            current_pane = panes.length - 1;
+        },
+
 		handler: function (ev) {
 			ev.preventDefault();
 
@@ -167,9 +173,9 @@
 			if (!$.data(this, "plugin_" + pluginName)) {
 				$.data(this, "plugin_" + pluginName, new Plugin(this, options));
 			}
-			else if ($.isFunction(Plugin.prototype[options])) {
-				$.data(this, 'plugin_' + pluginName)[options]();
-		    }
+            else {
+                $.data(this, "plugin_" + pluginName).bindNew(this);
+            } 
 		});
 
 		return this;
