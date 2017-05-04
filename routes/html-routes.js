@@ -17,4 +17,23 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
+  // map route loads map.html
+  app.get("/map", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/map.html"));
+  });
+
+  // profile route loads profile.html
+  app.get("/profile", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/profile.html"));
+  });
+
+  // settings route loads settings.html
+  app.get("/settings", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/settings.html"));
+  });
+
+  // studybuddy route loads studybuddy.html
+  app.get("/studybuddy", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/studybuddy.html"));
+  });
 };
