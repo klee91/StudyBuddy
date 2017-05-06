@@ -27,7 +27,7 @@ $(document).on('click','#btnLogin', function(event) {
         password: $('#loginPassword').val().trim()
     };
 
-    userRef.set(user.email).child(user.password);
+    // userRef.set(user.email).child(user.password);
     
     //Sign In Function
     auth.signInWithEmailAndPassword(user.email, user.password).catch(function(error) {
@@ -75,9 +75,9 @@ $(document).on('click','#btnLogout', function(event) {
 });
 
 //add a realtime listener
-auth.onAuthStateChange(User => { 
-    if(User) {
-        console.log(User);
+auth.onAuthStateChange(user, function() { 
+    if(user) {
+        console.log(user);
         $('#btnLogout').removeClass("hide");
     } else {
         console.log('Not logged in');
@@ -175,15 +175,15 @@ auth.onAuthStateChange(User => {
 // };
 
 // when user signs up, add to firebase
-function adduser(user) {
-  encodeEmail(user.email);
+function adduser(newUser) {
+  encodeEmail(newUser.email);
   console.log(encodedEmail);
 	   firebase.database().ref('user/' + encodedEmail).set(
         {
-        email: user.email
-        password: user.password
+        email: newUser.email,
+        password: newUser.password
        });
-	  console.log("password " + user.password);
+	  console.log("password " + newUser.password);
 };
 
 // replace firebase invalid characters from email for storage
