@@ -64,7 +64,7 @@ $(document).ready(function() {
     }
     // Constructing a newPost object to hand to the database
     var newBuddy = {
-      firstname: firstInput
+      firstName: firstInput
         .val()
         .trim(),
       lastName: lastInput
@@ -99,14 +99,14 @@ $(document).ready(function() {
       updatePost(newBuddy);
     }
     else {
-      submitPost(newBuddy);
+      submitBuddy(newBuddy);
     }
   }
 
   // Submits a new post and brings user to blog page upon completion
   function submitBuddy(buddy) {
-    $.post("/api/posts", buddy, function() {
-      window.location.href = "/blog";
+    $.post("/api/buddies", buddy, function() {
+      window.location.href = "/profile/";
     });
   }
 
