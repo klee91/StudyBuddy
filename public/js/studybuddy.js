@@ -14,40 +14,64 @@ $(document).ready(function() {
     // jQuery('<ul/>', {
     // }).appendTo('#tinderslide');
 
-    for (var i = 0; i < userArr.length; i++) {
-        //dynamically make divs for jTinder slideshow
+    // for (var i = userArr.length; i >= 0; i--) {
+    //     //dynamically make divs for jTinder slideshow
+        
 
-        var li = $("li")
-        li.addClass("pane" + (i+1));
-        var imgDiv = $("div")
-        imgDiv.addClass("img").appendTo(li);
-        var profDiv = $("div")
-        profDiv.addClass("info").appendTo(imgDiv);
-        var likeDiv = $("div")
-        likeDiv.addClass("like").appendTo(profDiv);
-        var dislikeDiv = $("div")
-        dislikeDiv.addClass("dislike").appendTo(likeDiv);
-        li.appendTo('ul')
+    //     var li = $("li")
+    //     li.addClass("pane" + (i));
+    //     var imgDiv = $("div")
+    //     //.css('background-image','url("' + userArr[i].photo + '")')
+    //     var profDiv = $("div")
+    //     var likeDiv = $("div")
+    //     var dislikeDiv = $("div")
 
+    //     dislikeDiv.addClass("dislike").appendTo(likeDiv);
+    //     likeDiv.addClass("like").appendTo(profDiv);
+    //     profDiv.addClass("info").appendTo(imgDiv);
+    //     imgDiv.addClass("img").appendTo(li);
+    //     li.appendTo('ul')
+    // };
+//------TODO: add dynamically the user pool's info from mySQL database (w/ Sequelize ORM)----
+//------info to show on slideshow includes user name, city/zip code, area of study/details------
         // jQuery('<div/>', {
         //     class: 'img',
         //     src: userArr[i].pic,
         // }).appendTo('li');
-    };
-});
+    // Get the modal
+    var modal = document.getElementById('buddyModal');
 
-$(document).on('click', '#connect', function(){
-});
+    // Get the button that opens the modal
+    var connectBtn = document.getElementById("connect");
 
-$(document).on('click', '#reject', function(){
-});
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-{/*<div id="tinderslide">
-    <ul>
-        <li class="pane1"><div class="img"></div><div>Miami Beach</div><div class="like"></div><div class="dislike"></div></li>
-        <li class="pane2"><div class="img"></div><div>San Francisco</div><div class="like"></div><div class="dislike"></div></li>
-        <li class="pane3"><div class="img"></div><div>Chicago</div><div class="like"></div><div class="dislike"></div></li>
-        <li class="pane4"><div class="img"></div><div>New York</div><div class="like"></div><div class="dislike"></div></li>
-        <li class="pane5"><div class="img"></div><div>Beach</div><div class="like"></div><div class="dislike"></div></li>
-    </ul>
-</div>*/}
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    $(document).on('click', '#connect', function(event){
+        event.preventDefault();
+        $('#tinderSlide').css('z-index', '1');
+        // When the user clicks on the button, open the modal
+        modal.style.display = "block";
+    });
+
+    $(document).on('click', '#reject', function(event){
+        event.preventDefault();
+    });
+
+    $(document).on('click', '#message', function(event){
+        event.preventDefault();
+    });
+
+});
