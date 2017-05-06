@@ -14,6 +14,13 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    email:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len:[1]
+      }
+    },
     state: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -48,8 +55,8 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    //area of expertise
-    AOE: {
+    //area of study
+    AOS: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

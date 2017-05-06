@@ -1,11 +1,39 @@
 $(document).ready(function() {
   // Getting jQuery references to the post body, title, form, and author select
-  var bodyInput = $("#body");
-  var titleInput = $("#title");
-  var cmsForm = $("#cms");
-  var authorSelect = $("#author");
-  // Adding an event listener for when the form is submitted
-  $(cmsForm).on("submit", handleFormSubmit);
+  var firstInput = $("#firstname");
+  var lastInput = $("#lastname");
+  var emailInput = $("#email");
+  var stateSelect = $("#state");
+  var cityInput = $("#city");
+  var ageInput = $("#age");
+  var phoneInput = $("#phone");
+  var signupForm = $("#signup");
+  var genderSelect = $("#gender");
+  var schoolInput = $("#school");
+  var studyInput = $("#aoe");
+
+
+//Arrays of vaules for state and gender drop down lists
+  var states = ["AK","AL","AR","AZ","CA","CO","CT","DE","FL","GA","HI","IA","ID","IL","IN","KS",
+        "KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM",
+        "NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY"];
+  
+  createDropDown(states, stateSelect);
+
+  var genders = ["Male", "Female", "Other"];
+
+  createDropDown(genders, genderSelect);
+
+
+  // Creates the author options in the dropdown
+  function createRow(item) {
+    var listOption = $("<option>");
+    listOption.attr("value", item);
+    listOption.text(item);
+    return listOption;
+  }
+
+  $(signupForm).on("submit", handleFormSubmit);
   // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
   var url = window.location.search;
   var postId;
@@ -31,37 +59,73 @@ $(document).ready(function() {
   function handleFormSubmit(event) {
     event.preventDefault();
     // Wont submit the post if we are missing a body, title, or author
-    if (!titleInput.val().trim() || !bodyInput.val().trim() || !authorSelect.val()) {
+    if (!firstInput.val().trim() || !lastInput.val().trim() || !genderSelect.val()) {
       return;
     }
     // Constructing a newPost object to hand to the database
-    var newPost = {
-      title: titleInput
+    var newBuddy = {
+      firstName: firstInput
         .val()
         .trim(),
-      body: bodyInput
+      lastName: lastInput
         .val()
         .trim(),
-      AuthorId: authorSelect.val()
+      email: emailInput
+        .val()
+        .trim(),
+      state: stateSelect.val(),
+      city: cityInput
+        .val()
+        .trim(),
+      age: ageInput
+        .val()
+        .trim(),
+      phoneNumber: phoneInput
+        .val()
+        .trim(),
+      gender: genderSelect.val(),
+      school: schoolInput
+        .val()
+        .trim(),
+      AOS: studyInput
+        .val()
+        .trim(),
     };
 
     // If we're updating a post run updatePost to update a post
     // Otherwise run submitPost to create a whole new post
     if (updating) {
       newPost.id = postId;
-      updatePost(newPost);
+      updatePost(newBuddy);
     }
     else {
-      submitPost(newPost);
+      submitBuddy(newBuddy);
     }
   }
 
   // Submits a new post and brings user to blog page upon completion
-  function submitPost(post) {
-    $.post("/api/posts", post, function() {
-      window.location.href = "/blog";
+  function submitBuddy(buddy) {
+    $.post("/api/buddies", buddy, function() {
+      window.location.href = "/profile/";
     });
   }
+
+
+  //function to create dropdown lists
+  function createDropDown(arrayName, list){
+
+  var rowsToAdd = [];
+
+  for (var i = 0; i < arrayName.length; i++) {
+    rowsToAdd.push(createRow(arrayName[i]));
+  };
+  list.empty();
+  console.log(rowsToAdd);
+  console.log(list);
+  list.append(rowsToAdd);
+  list.val(rowsToAdd);
+};
+
 
   // Gets post data for the current post if we're editing, or if we're adding to an author's existing posts
   // function getPostData(id, type) {
