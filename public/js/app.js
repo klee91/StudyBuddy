@@ -45,11 +45,12 @@ $(document).on('click','#btnLogin', function(event) {
 //signup button event
 $(document).on('click','#btnSignup', function(event) {
     event.preventDefault();
-
+    console.log("Signing user up");
     user = {
         email: $('#loginEmail').val().trim(),
         password: $('#loginPassword').val().trim()
     };
+    console.log(user);
 
     //Create New Account Function
     auth.createUserWithEmailAndPassword(user.email, user.password).catch(function(error) {
@@ -180,7 +181,7 @@ function adduser(user) {
   console.log(encodedEmail);
 	   firebase.database().ref('user/' + encodedEmail).set(
         {
-        email: user.email
+        email: user.email,
         password: user.password
        });
 	  console.log("password " + user.password);
