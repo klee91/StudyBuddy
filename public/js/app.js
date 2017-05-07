@@ -13,7 +13,6 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 const auth = firebase.auth();
-var userRef = firebase.database().ref("user");
 
 //--------------------------------------------------------------------
 //------------------------------ jQuery ------------------------------
@@ -76,7 +75,7 @@ $(document).on('click','#btnLogout', function(event) {
 });
 
 //add a realtime listener
-auth.onAuthStateChange(user, function() { 
+auth.onAuthStateChanged(function(user) { 
     if(user) {
         console.log(user);
         $('#btnLogout').removeClass("hide");
@@ -84,6 +83,7 @@ auth.onAuthStateChange(user, function() {
         console.log('Not logged in');
         $('#btnLogout').addClass("hide");
     }
+    console.log('user', user);
 });
 
 // //create a user in the database on sign up
@@ -176,6 +176,18 @@ auth.onAuthStateChange(user, function() {
 // };
 
 // when user signs up, add to firebase
+<<<<<<< HEAD
+// function adduser(newUser) {
+//   encodeEmail(newUser.email);
+//   console.log(encodedEmail);
+// 	   firebase.database().ref('user/' + encodedEmail).set(
+//         {
+//         email: newUser.email,
+//         password: newUser.password
+//        });
+// 	  console.log("password " + newUser.password);
+// };
+=======
 function adduser(newUser) {
   encodeEmail(newUser.email);
   console.log(encodedEmail);
@@ -188,18 +200,19 @@ function adduser(newUser) {
        });
 	  console.log("password " + newUser.password);
 };
+>>>>>>> origin/master
 
-// replace firebase invalid characters from email for storage
-function encodeEmail(email) {
-  // regex code to search for all "." and resplace with '%2E'
- encodedEmail = email.toLowerCase();
- encodedEmail =  encodedEmail.replace(/\./g, '%2E');
+// // replace firebase invalid characters from email for storage
+// function encodeEmail(email) {
+//   // regex code to search for all "." and resplace with '%2E'
+//  encodedEmail = email.toLowerCase();
+//  encodedEmail =  encodedEmail.replace(/\./g, '%2E');
 
- console.log("encodeEmail: " + encodedEmail);
-};
+//  console.log("encodeEmail: " + encodedEmail);
+// };
 
-// return email to original format when retrieve from firebase
-function decodeemail(email) {
-   // regex code to search for all '%2E' and resplace with '.'
-  return email.replace(/\%2E/g, '.');
-};
+// // return email to original format when retrieve from firebase
+// function decodeemail(email) {
+//    // regex code to search for all '%2E' and resplace with '.'
+//   return email.replace(/\%2E/g, '.');
+// };

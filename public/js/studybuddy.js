@@ -32,6 +32,7 @@ $(document).ready(function() {
     //     imgDiv.addClass("img").appendTo(li);
     //     li.appendTo('ul')
     // };
+    
 //------TODO: add dynamically the user pool's info from mySQL database (w/ Sequelize ORM)----
 //------info to show on slideshow includes user name, city/zip code, area of study/details------
         // jQuery('<div/>', {
