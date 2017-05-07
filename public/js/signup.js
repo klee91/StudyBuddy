@@ -4,7 +4,8 @@ $(document).ready(function() {
   // Getting jQuery references to the post body, title, form, and author select
   var firstInput = $("#firstname");
   var lastInput = $("#lastname");
-  var emailInput = $("#email");
+  var emailInput = $("#loginEmail");
+  var passInput = $("#loginPassword");
   var stateSelect = $("#state");
   var cityInput = $("#city");
   var ageInput = $("#age");
@@ -75,6 +76,7 @@ $(document).ready(function() {
       email: emailInput
         .val()
         .trim(),
+      password: passInput.val(),
       state: stateSelect.val(),
       city: cityInput
         .val()

@@ -44,11 +44,12 @@ $(document).on('click','#btnLogin', function(event) {
 //signup button event
 $(document).on('click','#btnSignup', function(event) {
     event.preventDefault();
-
+    console.log("Signing user up");
     user = {
         email: $('#loginEmail').val().trim(),
         password: $('#loginPassword').val().trim()
     };
+    console.log(user);
 
     //Create New Account Function
     auth.createUserWithEmailAndPassword(user.email, user.password).catch(function(error) {
@@ -175,6 +176,7 @@ auth.onAuthStateChanged(function(user) {
 // };
 
 // when user signs up, add to firebase
+<<<<<<< HEAD
 // function adduser(newUser) {
 //   encodeEmail(newUser.email);
 //   console.log(encodedEmail);
@@ -185,6 +187,20 @@ auth.onAuthStateChanged(function(user) {
 //        });
 // 	  console.log("password " + newUser.password);
 // };
+=======
+function adduser(newUser) {
+  encodeEmail(newUser.email);
+  console.log(encodedEmail);
+	   firebase.database().ref('user/' + encodedEmail).set(
+        {
+
+        email: newUser.email,
+        password: newUser.password
+
+       });
+	  console.log("password " + newUser.password);
+};
+>>>>>>> origin/master
 
 // // replace firebase invalid characters from email for storage
 // function encodeEmail(email) {
