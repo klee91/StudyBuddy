@@ -12,22 +12,20 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
-  // // GET route for getting all of the potential buddies
+  // GET route for getting all of the potential buddies
+  //--TODO-----------------------------------------------------
+  //********************************************************* */
   app.get("/api/buddies", function(req, res) {
-    var query = {};
-    if (req.query.author_id) {
-      query.AuthorId = req.query.author_id;
-    }
-    // 1. Add a join here to include all of the Authors to these posts
-    db.Post.findAll({
-      where: query,
-      include: [db.Author]
-    }).then(function(dbPost) {
-      res.json(dbPost);
+    var query = req.body.filter;
+    
+    db.Buddy.findAll({}).then(function(dbBuddy) {
+      res.json(dbBuddy);
+      console.log(dbBuddy);
+      res.end();
     });
   });
 
-  // // Get rotue for retrieving a single post
+  // // Get route for retrieving a single post
   // app.get("/api/posts/:id", function(req, res) {
   //   // 2. Add a join here to include the Author who wrote the Post
   //   db.Post.findOne({
@@ -41,26 +39,8 @@ module.exports = function(app) {
   //   });
   // });
 
-  // POST route for saving sign up info to database
-    app.post("/api/buddies", function(req, res) {
-    db.Buddy.create(req.body).then(function(dbBuddy) {
-      res.json(dbBuddy);
-    });
-  });
-
-  // // DELETE route for deleting posts
-  // app.delete("/api/posts/:id", function(req, res) {
-  //   db.Post.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function(dbPost) {
-  //     res.json(dbPost);
-  //   });
-  // });
-
   // PUT route for updating posts
-  app.put("/api/posts", function(req, res) {
+  app.put("/api/buddies", function(req, res) {
     db.Post.update(
       req.body,
       {

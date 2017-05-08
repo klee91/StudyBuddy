@@ -25,16 +25,15 @@ $(document).on('click','#btnLogin', function(event) {
         email: $('#loginEmail').val().trim(),
         password: $('#loginPassword').val().trim()
     };
-
-    // userRef.set(user.email).child(user.password);
     
     //Sign In Function
     auth.signInWithEmailAndPassword(user.email, user.password).catch(function(error) {
-    // Error Handling
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log(errorCode);
-    console.log(errorMessage);
+        // Error Handling
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        window.alert("Sign In Error");
     });
 
     $('#loginEmail').val('');
@@ -54,7 +53,6 @@ $(document).on('click','#btnSignup', function(event) {
     //Create New Account Function
     auth.createUserWithEmailAndPassword(user.email, user.password).catch(function(error) {
         // Error Handling
-        adduser(user);
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorCode);
@@ -176,7 +174,6 @@ auth.onAuthStateChanged(function(user) {
 // };
 
 // when user signs up, add to firebase
-<<<<<<< HEAD
 // function adduser(newUser) {
 //   encodeEmail(newUser.email);
 //   console.log(encodedEmail);
@@ -187,20 +184,7 @@ auth.onAuthStateChanged(function(user) {
 //        });
 // 	  console.log("password " + newUser.password);
 // };
-=======
-function adduser(newUser) {
-  encodeEmail(newUser.email);
-  console.log(encodedEmail);
-	   firebase.database().ref('user/' + encodedEmail).set(
-        {
 
-        email: newUser.email,
-        password: newUser.password
-
-       });
-	  console.log("password " + newUser.password);
-};
->>>>>>> origin/master
 
 // // replace firebase invalid characters from email for storage
 // function encodeEmail(email) {
