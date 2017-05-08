@@ -43,7 +43,9 @@ module.exports = function(app) {
 
   // POST route for saving sign up info to database
     app.post("/api/buddies", function(req, res) {
+      console.log(req.body);
     db.Buddy.create(req.body).then(function(dbBuddy) {
+
       res.json(dbBuddy);
     });
   });
