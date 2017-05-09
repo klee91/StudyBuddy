@@ -1,29 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Study Buddy</title>
-    <link rel="stylesheet" type="text/css" href="css/jTinder.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<title>Circle Menu</title>
+<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script src="js/script.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="assets/css/jTinder.css">
+
+  	<script src="https://use.fontawesome.com/6075022657.js"></script>
+
+  	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <h1>Hello World</h1>
+
+<div class="menucontainer" id="circlemenueffect">
+							<!-- ******************************** -->
+							<!-- Circle Menu START -->
+							<div class="circlemenu">	
+								<nav class="menu-wrapper">
+							 	<button class="menu-btn" has-ripple="true">
+							    <i></i>
+							    <i></i>
+							    <i></i>
+							    <span class="ripple"></span>
+							  	</button>
+							  	<ul class="menu">
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="#" class="menu-item">
+							        <i class="fa fa-weixin" aria-hidden="true"></i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="./index.html" class="menu-item">
+							        	<i class="material-icons">
+							            <i class="fa fa-sign-out" aria-hidden="true"></i>
+							           	</i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="profile.html" class="menu-item">
+							            <i class="fa fa-user" aria-hidden="true"></i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="./map.html" class="menu-item">
+							            <i class="fa fa-map-marker" aria-hidden="true"></i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="./settings.html" class="menu-item">
+							            <i class="fa fa-cog" aria-hidden="true"></i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							  	</ul>
+								</nav>
+							</div>
+							<!-- ******************************** -->
+							<!-- Circle Menu END -->
+</div>
+
+<div class="container">
 
 
-<!-- jQuery lib -->
-<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 
-<!-- transform2d lib -->
-<script type="text/javascript" src="js/jquery.transform2d.js"></script>
+<div class="jumbotron" align="center">
+  <div class="page-header">
+ 
+    <h1 class="mainhead">Study Buddy</h1>      
+  </div>
+		  	<div class="container">
+			  	<div class="geomap">
+			         	  <div>
 
-<!-- jTinder lib -->
-<script type="text/javascript" src="js/jquery.jTinder.js"></script>
+						<!-- *************************** -->
+						a page that has no real use, have a PLACE HOLDER instead! :D
+						<!-- *************************** -->						  </div>
+				</div>
+							
 
-<!-- jTinder initialization script -->
-<script>$("#tinderslide").jTinder();</script>
-<script src="js/studybuddy.js"></script>
+							
+
+		 	</div>
+</div>
+</div>
+
+
+<script>
+
+var widget = $('.circlemenu');
+
+
+$('.menu-item').on('click', function(){
+
+	
+})
+</script>
+
 </body>
 </html>
