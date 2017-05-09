@@ -5,9 +5,9 @@ html, body {
     position: relative;
 }
 
-body {
+/*body {
     overflow: hidden;
-}
+}*/
 
 /* Wrapper with padding */
 .wrap  {
