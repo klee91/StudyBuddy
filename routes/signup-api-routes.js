@@ -27,23 +27,25 @@ module.exports = function(app) {
   //   });
   // });
 
-  // // Get rotue for retrieving a single post
-  // app.get("/api/posts/:id", function(req, res) {
-  //   // 2. Add a join here to include the Author who wrote the Post
-  //   db.Post.findOne({
-  //     include: [db.Author],
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function(dbPost) {
-  //     console.log(dbPost);
-  //     res.json(dbPost);
-  //   });
-  // });
+  // Get rotue for retrieving buddy profile
+  app.get("/api/buddies/:id", function(req, res) {
+    // 2. Add a join here to include the Author who wrote the Post
+    db.Buddy.findOne({
+      include: [db.firstName],
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbBuddy) {
+      console.log(dbBuddy);
+      res.json(dbBuddy);
+    });
+  });
 
   // POST route for saving sign up info to database
     app.post("/api/buddies", function(req, res) {
+      console.log(req.body);
     db.Buddy.create(req.body).then(function(dbBuddy) {
+
       res.json(dbBuddy);
     });
   });

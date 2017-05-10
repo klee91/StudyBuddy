@@ -13,7 +13,9 @@ $(document).ready(function() {
   var signupForm = $("#signup");
   var genderSelect = $("#gender");
   var schoolInput = $("#school");
-  var studyInput = $("#aoe");
+  var aoeInput = $("#aoe");
+  var studySelect = $("#study");
+
 
 
 //Arrays of vaules for state and gender drop down lists
@@ -27,6 +29,10 @@ $(document).ready(function() {
 
   createDropDown(genders, genderSelect);
 
+  var studySubs = ["MATH","SCIENCE","HISTORY","ENGLISH","FOREIGN LANGUAGE","CODING"];
+
+  createDropDown(studySubs, studySelect);
+
 
   // Creates the author options in the dropdown
   function createRow(item) {
@@ -36,8 +42,14 @@ $(document).ready(function() {
     return listOption;
   }
 
-  $(signupForm).on("submit", handleFormSubmit);
+  $(signupForm).on("#btnSignup", handleFormSubmit);
   // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
+  $(document).on("click","#btnSignup", function(event){
+    event.preventDefault();
+    handleFormSubmit();
+    console.log("click is working");
+  });
+
   var url = window.location.search;
   var postId;
   var authorId;
@@ -60,11 +72,12 @@ $(document).ready(function() {
 
   // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
-    event.preventDefault();
+    
     // Wont submit the post if we are missing a body, title, or author
     if (!firstInput.val().trim() || !lastInput.val().trim() || !genderSelect.val()) {
       return;
     }
+      console.log("registering to SQL Server");
     // Constructing a newPost object to hand to the database
     var newBuddy = {
       firstName: firstInput
@@ -91,9 +104,10 @@ $(document).ready(function() {
       school: schoolInput
         .val()
         .trim(),
-      AOS: studyInput
+      AOS: aoeInput
         .val()
         .trim(),
+      study_subject: studyInput.val()
     };
 
     // If we're updating a post run updatePost to update a post

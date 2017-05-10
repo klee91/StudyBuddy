@@ -44,6 +44,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     age: {
       type: DataTypes.INTEGER,
+      allowNull: false
     },
     phoneNumber: {
       type: DataTypes.STRING,
@@ -66,6 +67,20 @@ module.exports = function(sequelize, DataTypes) {
     AOS: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    study_subject: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    uid: {
+      type: DataTypes.STRING,
+      allowNull: true,
       validate: {
         len: [1]
       }
