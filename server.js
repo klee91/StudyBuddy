@@ -11,6 +11,8 @@ var bodyParser = require("body-parser");
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 var db = require("./models");
 
@@ -22,12 +24,13 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory
 app.use(express.static("./public"));
-
+app.use(express.static("./public/chatroom/styles"))
 // Routes =============================================================
 
 require("./routes/buddy-api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 require("./routes/signup-api-routes.js")(app);
+require("./public/chatroom")(app);
 // require("./routes/author-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our express app
@@ -36,3 +39,4 @@ db.sequelize.sync({}).then(function() {
     console.log("App listening on PORT " + PORT);
   });
 });
+
