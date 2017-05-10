@@ -12,7 +12,6 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
-
 //get route for all buddies
 app.get("/api/buddies", function(req, res) {
     db.Buddy.findAll({}).then(function(dbBuddy) {
@@ -37,31 +36,42 @@ app.get("/api/:academicSub?", function(req, res) {
     });
 });
 
-}
-  // // Get route for retrieving a single post
-  // app.get("/api/posts/:id", function(req, res) {
-  //   // 2. Add a join here to include the Author who wrote the Post
-  //   db.Post.findOne({
-  //     include: [db.Author],
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(function(dbPost) {
-  //     console.log(dbPost);
-  //     res.json(dbPost);
-  //   });
-  // });
+//get route for one buddy
+app.get("/api/buddies/:username", function(req, res) {
+    db.Buddy.findOne({
+      where: {
+        email: req.params.username
+      }
+    }).then(function(dbBuddy) {
+      res.json(dbBuddy);
+      console.log(dbBuddy);
+      res.end();
+    });
+});
 
-  // PUT route for updating buddies
-//   app.put("/api/buddies", function(req, res) {
-//     db.Post.update(
-//       req.body,
-//       {
-//         where: {
-//           id: req.body.id
-//         }
-//       }).then(function(dbPost) {
-//         res.json(dbPost);
-//       });
-//   });
-// };
+// PUT route for updating specific buddy info
+    app.put("/api/buddies/:username", function(req, res) {
+      var updateInfo = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password,
+        state: req.body.state,
+        city: req.body.city,
+        age: req.body.age,
+        phoneNumber: req.body.phone,
+        gender: req.body.gender,
+        school: req.body.school,
+        AOS: req.body.aos,
+        study_subject: req.body.study,
+      }
+      db.Buddy.update(updateInfo, {
+        where: {
+          email: req.body.username
+        }
+      }).then(function(dbBuddy) {
+        res.json(dbBuddy);
+      })
+    });
+}
+

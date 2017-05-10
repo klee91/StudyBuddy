@@ -33,11 +33,11 @@ $(document).ready(function() {
     console.log("page is ready");
     //show filtermodal on load
     $('#filterModal').show();
-    
+    $('#main').hide();
     //array to store potential users/buddies
     var userArr = [];
     var list = $('#list');
-    var userObj;
+    var userObjGlobal;
 
     // Get the modals
     var modal1 = document.getElementById('buddyModal');
@@ -52,6 +52,7 @@ $(document).ready(function() {
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal1.style.display = "none";
+        $('#modalBudPhoto').html(" ");
         $('#modalBudName').html(" ");
         $('#modalBudAOS').html(" ");
         $('#modalBudEmail').html(" ");
@@ -61,6 +62,7 @@ $(document).ready(function() {
     window.onclick = function(event) {
         if (event.target == modal1) {
             modal1.style.display = "none";
+            $('#modalBudPhoto').html(" ");
             $('#modalBudName').html(" ");
             $('#modalBudAOS').html(" ");
             $('#modalBudEmail').html(" ");
@@ -85,6 +87,7 @@ $(document).on('click', '#buddySubmitBtn', function(event){
     //clear filter input and hide modal
     $('#buddyFilter').val('');
     $('#filterModal').hide();
+    $('#main').show();
 });
 
 //render buddies and append to page
@@ -107,6 +110,7 @@ $(document).on('click', '#buddySubmitBtn', function(event){
 
                 imgDiv.addClass("img").appendTo(li);
                 profDiv.addClass("info").html(
+                    "<img src='"+ buddyData[i].photo +"'>" + "<br>" + 
                     "<p>" + buddyData[i].firstName + " " + buddyData[i].lastName + "</p>" + "<br>" +
                     "<p>" + buddyData[i].AOS + "</p>" +
                     "<p>" + buddyData[i].city + ", " + buddyData[i].state + "</p>" +
@@ -122,13 +126,11 @@ $(document).on('click', '#buddySubmitBtn', function(event){
 
 // Function for retrieving buddies and getting them ready to be rendered to the page
   function getbuddies(academicSub) {
-      console.log("first:" + academicSub);
     $.get("/api/" + academicSub, function(data) {
         if (data === false) {
             return "No buddy found!";
         }
         else {
-            console.log("data: " + data);
             //users to be populated, stored in array
             for (var i = 0; i < data.length; i++) {
                 userArr.push(data[i]);
@@ -151,10 +153,10 @@ $(document).on('click', '#buddySubmitBtn', function(event){
             console.log("data: " + data);
             for (var i = 0; i < data.length; i++) {
                 if (email === data[i].email) {
-                    userObj = data[i];
-                    console.log(userObj);
-                    appendToModal(userObj)
-                    return;
+                    userObjGlobal = data[i];
+                    console.log(userObjGlobal);
+                    appendToModal(userObjGlobal)
+                    return userObjGlobal;
                 }
             }
         }
@@ -163,6 +165,7 @@ $(document).on('click', '#buddySubmitBtn', function(event){
 
 //appending info to modal;
 function appendToModal(userObj) {
+    $('#modalBudPhoto').html("<img src='"+ userObj.photo +"'>"); 
     $('#modalBudName').html(userObj.firstName + " " + userObj.lastName);
     $('#modalBudAOS').html(userObj.AOS);
     $('#modalBudEmail').html(userObj.email);
@@ -178,15 +181,11 @@ function appendToModal(userObj) {
         getbuddiesByEmail(userEmail);
     });
 
-    // $(document).on('click', '#reject', function(event){
-    //     event.preventDefault();
-        // $("#tinderslide").jTinder('dislike');
-    // });
-
     //see profile button to redirect to selected user's profile page
     $(document).on('click', '#seeProfile', function(event){
         event.preventDefault();
-
+        var res = encodeURIComponent(userObjGlobal.email);
+        window.location.href = "/profile/" + res;
     });
 
 });
