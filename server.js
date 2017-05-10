@@ -12,6 +12,25 @@ var bodyParser = require("body-parser");
 var app = express();
 var PORT = process.env.PORT || 8080;
 
+// Sets up the Express Handlebars.js
+// =============================================================
+var exphbs = require("express-handlebars");
+
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+
+server.listen(80);
+
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 var db = require("./models");
 
 // Sets up the Express app to handle data parsing
