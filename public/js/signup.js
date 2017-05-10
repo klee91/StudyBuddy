@@ -13,7 +13,9 @@ $(document).ready(function() {
   var signupForm = $("#signup");
   var genderSelect = $("#gender");
   var schoolInput = $("#school");
-  var studyInput = $("#aoe");
+  var aoeInput = $("#aoe");
+  var studySelect = $("#study");
+
 
 
 //Arrays of vaules for state and gender drop down lists
@@ -26,6 +28,10 @@ $(document).ready(function() {
   var genders = ["Male", "Female", "Other"];
 
   createDropDown(genders, genderSelect);
+
+  var studySubs = ["MATH","SCIENCE","HISTORY","ENGLISH","FOREIGN LANGUAGE","CODING"];
+
+  createDropDown(studySubs, studySelect);
 
 
   // Creates the author options in the dropdown
@@ -98,9 +104,10 @@ $(document).ready(function() {
       school: schoolInput
         .val()
         .trim(),
-      AOS: studyInput
+      AOS: aoeInput
         .val()
         .trim(),
+      study_subject: studyInput.val()
     };
 
     // If we're updating a post run updatePost to update a post
