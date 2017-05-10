@@ -33,7 +33,6 @@ $(document).ready(function() {
 
   createDropDown(studySubs, studySelect);
 
-
   // Creates the author options in the dropdown
   function createRow(item) {
     var listOption = $("<option>");
@@ -107,7 +106,7 @@ $(document).ready(function() {
       AOS: aoeInput
         .val()
         .trim(),
-      study_subject: studyInput.val()
+      study_subject: studySelect.val()
     };
 
     // If we're updating a post run updatePost to update a post
