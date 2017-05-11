@@ -41,4 +41,8 @@ module.exports = function(app) {
     res.render("studybuddy", { title: 'The Buddifier', layout: 'studybuddylayout' })
   });
 
+  app.get('/chat', function(req, res){
+  res.sendFile(__dirname + '/chat.html');
+});
+
 };
