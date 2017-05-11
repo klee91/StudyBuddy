@@ -82,4 +82,7 @@ auth.onAuthStateChanged(function(user) {
         $('#btnLogout').addClass("hide");
     }
     console.log('user', user);
+    console.log(user.email);
+
+
 });

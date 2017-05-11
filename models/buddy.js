@@ -64,7 +64,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     //area of study
-    AOS: {
+    aos: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
