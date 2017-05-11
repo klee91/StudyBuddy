@@ -76,10 +76,10 @@ $(document).on('click','#btnLogout', function(event) {
 //add a realtime listener
 auth.onAuthStateChanged(function(user) { 
     if(user) {
-        $('#btnLogout').removeClass("hide");
+        $('.circlemenu').show();
     } else {
         console.log('Not logged in');
-        $('#btnLogout').addClass("hide");
+        $('.circlemenu').hide();
     }
     console.log('user', user);
     console.log(user.email);
