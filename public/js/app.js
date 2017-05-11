@@ -20,12 +20,11 @@ const auth = firebase.auth();
 //login button event
 $(document).on('click','#btnLogin', function(event) {
     event.preventDefault();
-
     user = {
         email: $('#loginEmail').val().trim(),
         password: $('#loginPassword').val().trim()
     };
-    
+    // location.reload();
     //Sign In Function
     auth.signInWithEmailAndPassword(user.email, user.password).catch(function(error) {
         // Error Handling
@@ -68,6 +67,7 @@ $(document).on('click','#btnLogout', function(event) {
     //Sign Out Function
     auth.signOut().then(function() {
         console.log("user signed out");
+        window.location.href = "/";
     }).catch(function(error) {
         console.log("Error: Sign Out " + error);
     });
@@ -77,12 +77,29 @@ $(document).on('click','#btnLogout', function(event) {
 auth.onAuthStateChanged(function(user) { 
     if(user) {
         $('.circlemenu').show();
+        // $(document).on('click', '#seeProfile', function(event){
+        //     event.preventDefault();
+        //     window.location.href = "/profile?email=" + user.email;
+        // });
+        $(document).on('click', '#seeSettings', function(event){
+            event.preventDefault();
+            window.location.href = "/settings";
+        });
+
+        $(document).on('click', '#seeStudybuddy', function(event){
+            event.preventDefault();
+            window.location.href = "/studybuddy";
+        });
+        
+        $(document).on('click', '#seeChat', function(event){
+            event.preventDefault();
+            window.location.href = "/chat";
+        });
     } else {
         console.log('Not logged in');
         $('.circlemenu').hide();
     }
     console.log('user', user);
     console.log(user.email);
-
 
 });

@@ -1,3 +1,82 @@
+
+<div class="menucontainer" id="circlemenueffect">
+							<!-- ******************************** -->
+							<!-- Circle Menu START -->
+							<div class="circlemenu">	
+								<nav class="menu-wrapper">
+							 	<button class="menu-btn" has-ripple="true">
+							    <i></i>
+							    <i></i>
+							    <i></i>
+							    <span class="ripple"></span>
+							  	</button>
+							  	<ul class="menu">
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="#" class="menu-item" id="seeChat">
+							        <i class="fa fa-weixin" aria-hidden="true"></i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder" >
+							        <a href="#" class="menu-item" id="btnLogout">
+							        	<i class="material-icons">
+
+							            <i class="fa fa-sign-out" aria-hidden="true"></i>
+
+							           	</i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="#" class="menu-item" id="seeProfile">
+							            <i class="fa fa-user" aria-hidden="true"></i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="#" class="menu-item" id="seeStudybuddy">
+							            <i class="fa fa-map-marker" aria-hidden="true"></i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="#" class="menu-item" id="seeSettings">
+							            <i class="fa fa-cog" aria-hidden="true"></i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							  	</ul>
+								</nav>
+							</div>
+							<!-- ******************************** -->
+							<!-- Circle Menu END -->
+</div>
+
 <div class="container">
 		<div class="row top-30">
 		<h1>Sign Up Buddy!</h1>
@@ -60,6 +139,19 @@
 			</div>
 		</div>
 	</div>
-	<!-- Custom Script -->
-	<script src="js/signup.js" type="text/javascript"></script>
-	<script src="js/app.js" type="text/javascript"></script>
+<footer>
+	<p class="text-center">© Copyright StudyBuddy 2017</p>
+</footer>
+
+<!-- Custom Script -->
+<script src="js/signup.js" type="text/javascript"></script>
+<!-- Firebase script -->
+<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+<script src="js/app.js" type="text/javascript"></script>
+<script>
+var widget = $('.circlemenu');
+
+$('.menu-item').on('click', function(){
+	
+})
+</script>
