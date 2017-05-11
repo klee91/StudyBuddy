@@ -61,15 +61,14 @@ module.exports = function(app) {
   // });
 
   // PUT route for updating posts
-  app.put("/api/posts", function(req, res) {
-    db.Post.update(
-      req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      }).then(function(dbPost) {
-        res.json(dbPost);
-      });
-  });
+  // app.put("/api/buddies", function(req, res) {
+  //   db.Buddy.update(
+  //     {
+  //       where: {
+  //         id: req.body.id
+  //       }
+  //     }).then(function(dbBuddy) {
+  //       res.json(dbBuddy);
+  //     });
+  // });
 };
