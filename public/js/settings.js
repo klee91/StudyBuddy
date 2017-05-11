@@ -2,20 +2,25 @@
 auth.onAuthStateChanged(function(user) { 
     if(user) {
         $('#btnLogout').removeClass("hide");
+
+        var queryUrl = "api/buddies/" + user.email;  
+
+        $.get(queryUrl, function(data) {
+            console.log(data);
+
+            //handlebars code to put data onto settings.handlebars//
+
+            
+        });
+
     } else {
         console.log('Not logged in');
         $('#btnLogout').addClass("hide");
     }
     console.log('user', user);
 
-  var queryUrl = "api/buddies/" + user.email;  
-
-  $.get(queryUrl, function(data) {
-    console.log(data);
+ 
     });
-
-
-});
 
 $(document).ready(function() {
   console.log("page is ready");
