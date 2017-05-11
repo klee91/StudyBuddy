@@ -78,13 +78,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    uid: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [1]
-      }
-    }
   });
   return Buddy;
 };

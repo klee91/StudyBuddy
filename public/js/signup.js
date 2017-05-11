@@ -33,7 +33,6 @@ $(document).ready(function() {
 
   createDropDown(studySubs, studySelect);
 
-
   // Creates the author options in the dropdown
   function createRow(item) {
     var listOption = $("<option>");

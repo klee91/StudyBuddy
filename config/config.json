@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "root",
-    "password": "r0flman29",
+    "password": "Siren_song123",
     "database": "studybuddy",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Jaklee91!",
+    "password": "Siren_song123",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": "Jaklee91!",
+    "password": "Siren_song123",
     "database": "database_production",
     "host": "127.0.0.1",
     "dialect": "mysql"
