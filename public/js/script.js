@@ -3,11 +3,9 @@ $(document).ready(function(){
   $('[has-ripple="true"]').click(function () {
     $(this).toggleClass('clicked');
     $('.menu').toggleClass('open');
-    console.log("I got here")
   });
 
   $('.menu a').each(function (index) {
-    console.log("I maybe got here")
     var thismenuItem        = $(this);
     
     thismenuItem.click(function (event) {
