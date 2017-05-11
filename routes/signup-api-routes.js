@@ -28,12 +28,11 @@ module.exports = function(app) {
   // });
 
   // Get rotue for retrieving buddy profile
-  app.get("/api/buddies/:id", function(req, res) {
-    // 2. Add a join here to include the Author who wrote the Post
+  app.get("/api/buddies/:email", function(req, res) {
     db.Buddy.findOne({
-      include: [db.firstName],
+      // include: [db.firstName],
       where: {
-        id: req.params.id
+        email: req.params.email
       }
     }).then(function(dbBuddy) {
       console.log(dbBuddy);
