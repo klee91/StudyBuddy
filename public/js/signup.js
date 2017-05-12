@@ -64,7 +64,7 @@ $(document).ready(function() {
     }
 
     //if not a valid zip code, will not submit
-    if ( validateZip(zipCode.val().trim()) == false) {
+    if ( validateZIP(zipCode.val().trim()) == false) {
       alert("Zip code is incorrect");
       return ;
     }
