@@ -1,0 +1,21 @@
+#profile {
+	font-family: 'Pacifico', cursive;
+	font-size: 80px;
+}
+
+body {
+	background-color: #52f29a;
+}
+
+#profileDiv {
+	background-color: white;
+	border-radius: 6px;
+	margin-top: 40px;
+	padding-top: 10px;
+}
+
+#footer {
+	display:inline-flex;
+	margin-left: 45%;
+	margin-top: 18px;
+}
