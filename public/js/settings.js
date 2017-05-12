@@ -45,9 +45,6 @@ auth.onAuthStateChanged(function(user) {
 
         currentid = data.id;
         return currentid;
-        // authorId = data.AuthorId || data.id;
-        // If we have a post with this id, set a flag for us to know to update the post
-        // when we hit submit
             
         });
 
@@ -136,19 +133,12 @@ auth.onAuthStateChanged(function(user) {
       updateBuddy(newBuddy);
     };
 
-
-  
-    // $(editForm).on("#btnUpdate", handleFormUpdate);
     // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
     $(document).on("click","#btnUpdate", function(event){
 
       event.preventDefault();
       handleFormUpdate();
     });
-    // If we're updating a post run updatePost to update a post
-    // Otherwise run submitPost to create a whole new post
-
-
 
   // Getting buddy data by email
   getcurrentUser(emailParam);
@@ -163,13 +153,6 @@ auth.onAuthStateChanged(function(user) {
         }
         else {
             console.log("data: " + data);
-            // for (var i = 0; i < data.length; i++) {
-            //     if (email === data[i].email) {
-            //         userObj = data[i];
-            //         console.log(userObj);
-            //         return;
-            //     }
-            // }
         }
     })
   }
@@ -181,17 +164,6 @@ auth.onAuthStateChanged(function(user) {
     listOption.text(item);
     return listOption;
   }
-
-
-
- // function updateBuddy(buddy) {
- //  var queryUrl = "/api/buddies/" + emailInput.val().trim();
- //    console.log("updating profile");
- //    console.log(buddy);
- //    $.put("queryUrl", buddy, function() {
- //      window.location.href = "/settings/";
- //     });
- //  }
 
     function updateBuddy(buddy) {
       var queryUrl = "/api/buddies/" + currentid;
