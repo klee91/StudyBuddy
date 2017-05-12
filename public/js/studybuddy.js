@@ -81,7 +81,7 @@ $(document).on('click', '#buddySubmitBtn', function(event){
                 profDiv.addClass("info").html(
                     "<img class='prof-imgs' src='"+ buddyData[i].photoURL +"'>" + "<br>" + 
                     "<p>" + buddyData[i].firstName + " " + buddyData[i].lastName + "</p>" + "<br>" +
-                    "<p>" + buddyData[i].AOS + "</p>" +
+                    "<p>" + buddyData[i].aos + "</p>" +
                     "<p>" + buddyData[i].city + ", " + buddyData[i].state + "</p>" +
                     "<p>" + buddyData[i].school + "</p>"
                 ).appendTo(li);
@@ -132,9 +132,9 @@ $(document).on('click', '#buddySubmitBtn', function(event){
 
 //appending info to modal;
 function appendToModal(userObj) {
-    $('#modalBudPhoto').html("<img src='"+ userObj.photo +"'>"); 
+    $('#modalBudPhoto').html("<img src='"+ userObj.photoURL +"'>"); 
     $('#modalBudName').html(userObj.firstName + " " + userObj.lastName);
-    $('#modalBudAOS').html(userObj.AOS);
+    $('#modalBudAOS').html(userObj.aos);
     $('#modalBudEmail').html(userObj.email);
     $('#modalBudLocation').html(userObj.city + ", " + userObj.state + " " + userObj.zipcode);
 }

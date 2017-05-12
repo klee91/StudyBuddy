@@ -118,7 +118,7 @@ $(document).ready(function() {
   // Submits a new post and brings user to blog page upon completion
   function submitBuddy(buddy) {
     $.post("/api/buddies", buddy, function() {
-      window.location.href = "/settings/";
+      window.location.href = "/settings";
 
     });
   }
