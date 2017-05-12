@@ -19,6 +19,7 @@
 
   var currentid;
   var isZip = false;
+
 //add a realtime listener
 auth.onAuthStateChanged(function(user) { 
     if(user) {
@@ -89,21 +90,12 @@ auth.onAuthStateChanged(function(user) {
     };
 
     list.empty();
-    // console.log(rowsToAdd);
-    // console.log(list);
     list.append(rowsToAdd);
     list.val(rowsToAdd);
   };
 
   // Sets a flag for whether or not we're updating info to be false initially
   var updating = true;
-
-  // If we have this section in our url, we pull out the post id from the url
-  // In '?post_id=1', postId is 1
-  if (url.indexOf("?email") !== -1) {
-    emailParam = url;
-    console.log("emailParam:" + emailParam);
-  }
 
 // A function for handling what happens when the form to create a new post is submitted
   function handleFormUpdate(event) {
@@ -113,7 +105,7 @@ auth.onAuthStateChanged(function(user) {
     }
     
     //if not a valid zip code, will not submit
-    if ( validateZIP(zipCode.val().trim()) == false) {
+    if ( validateZIP(zipCode.val()) == false) {
       alert("Zip code is incorrect");
       return ;
     }
