@@ -6,8 +6,10 @@ $(document).ready(function() {
 
   var fullName = $("#fullName");
   var userEmail = $("#email");
+  var photoURL = $("#photoURL");
   var state = $("#state");
   var city = $("#city");
+  var zipCode= $('#zipCode');
   var age = $("#age");
   var phone = $("#phone");
   var gender = $("#gender");
@@ -44,8 +46,10 @@ $(document).ready(function() {
             console.log("profile data: " + data);
             fullName.html(data.firstName + " " + data.lastName);
             userEmail.html(data.email);
+            $('#profilePhoto').html("<img src='"+ data[i].photoURL +"'>");
             state.html(data.state);
             city.html(data.city);
+            zipCode.html(data.zipcode);
             age.html(data.age);
             phone.html(data.phoneNumber);
             gender.html(data.gender.toUpperCase());

@@ -6,8 +6,10 @@ $(document).ready(function() {
   var lastInput = $("#lastname");
   var emailInput = $("#loginEmail");
   var passInput = $("#loginPassword");
+  var photoURL = $('#photoURL');
   var stateSelect = $("#state");
   var cityInput = $("#city");
+  var zipCode = $("#zipCode")
   var ageInput = $("#age");
   var phoneInput = $("#phone");
   var signupForm = $("#signup");
@@ -15,8 +17,6 @@ $(document).ready(function() {
   var schoolInput = $("#school");
   var aoeInput = $("#aoe");
   var studySelect = $("#study");
-
-
 
 //Arrays of vaules for state and gender drop down lists
   var states = ["AK","AL","AR","AZ","CA","CO","CT","DE","FL","GA","HI","IA","ID","IL","IN","KS",
@@ -50,25 +50,10 @@ $(document).ready(function() {
   });
 
   var url = window.location.search;
-  // var postId;
-  // var authorId;
-      var queryUrl;
+  var queryUrl;
+
   // Sets a flag for whether or not we're updating a post to be false initially
   var updating = false;
-
-  // If we have this section in our url, we pull out the post id from the url
-  // // In '?post_id=1', postId is 1
-  // if (url.indexOf("?post_id=") !== -1) {
-  //   postId = url.split("=")[1];
-  //   getPostData(postId, "post");
-  // }
-  // // Otherwise if we have an author_id in our url, preset the author select box to be our Author
-  // else if (url.indexOf("?author_id=") !== -1) {
-  //   authorId = url.split("=")[1];
-  // }
-
-  // Getting the authors, and their posts
-  // getAuthors();
 
   // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
@@ -77,8 +62,15 @@ $(document).ready(function() {
     if (!firstInput.val().trim() || !lastInput.val().trim() || !genderSelect.val()) {
       return;
     }
+
+    //if not a valid zip code, will not submit
+    if ( validateZIP(zipCode.val().trim()) == false) {
+      alert("Zip code is incorrect");
+      return ;
+    }
+
       console.log("registering to SQL Server");
-    // Constructing a newPost object to hand to the database
+    // Constructing a new Buddy object to hand to the database
     var newBuddy = {
       firstName: firstInput
         .val()
@@ -90,10 +82,12 @@ $(document).ready(function() {
         .val()
         .trim(),
       password: passInput.val(),
+      photoURL: photoURL.val().trim(),
       state: stateSelect.val(),
       city: cityInput
         .val()
         .trim(),
+      zipcode: zipCode.val().trim(),
       age: ageInput
         .val()
         .trim(),
@@ -145,38 +139,29 @@ $(document).ready(function() {
   list.val(rowsToAdd);
 };
 
- 
+// zip code validator
+    function validateZIP(field) {
+      var valid = "0123456789-";
+      var hyphencount = 0;
 
-
-  // // A function to get Authors and then render our list of Authors
-  // function getAuthors() {
-  //   $.get("/api/authors", renderAuthorList);
-  // }
-  // // Function to either render a list of authors, or if there are none, direct the user to the page
-  // // to create an author first
-  // function renderAuthorList(data) {
-  //   if (!data.length) {
-  //     window.location.href = "/authors";
-  //   }
-  //   $(".hidden").removeClass("hidden");
-  //   var rowsToAdd = [];
-  //   for (var i = 0; i < data.length; i++) {
-  //     rowsToAdd.push(createAuthorRow(data[i]));
-  //   }
-  //   authorSelect.empty();
-  //   console.log(rowsToAdd);
-  //   console.log(authorSelect);
-  //   authorSelect.append(rowsToAdd);
-  //   authorSelect.val(authorId);
-  // }
-
-  // // Creates the author options in the dropdown
-  // function createAuthorRow(author) {
-  //   var listOption = $("<option>");
-  //   listOption.attr("value", author.id);
-  //   listOption.text(author.name);
-  //   return listOption;
-  // }
+      if (field.length!=5 && field.length!=10) {
+      alert("Please enter your 5 digit or 5 digit+4 zip code.");
+      return false;
+      }
+      for (var i=0; i < field.length; i++) {
+      temp = "" + field.substring(i, i+1);
+      if (temp == "-") hyphencount++;
+      if (valid.indexOf(temp) == "-1") {
+      alert("Invalid characters in your zip code.  Please try again.");
+      return false;
+      }
+      if ((hyphencount > 1) || ((field.length==10) && ""+field.charAt(5)!="-")) {
+      alert("The hyphen character should be used with a properly formatted 5 digit+four zip code, like '12345-6789'.   Please try again.");
+      return false;
+        }
+      }
+      return true;
+    }
 
   // Update a given post, bring user to the blog page when done
   function updatePost(post) {

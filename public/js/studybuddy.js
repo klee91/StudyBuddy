@@ -27,6 +27,7 @@ $(document).ready(function() {
         $('#modalBudName').html(" ");
         $('#modalBudAOS').html(" ");
         $('#modalBudEmail').html(" ");
+        $('#modalBudLocation').html(" ");
     }
 
     // When the user clicks anywhere outside of the modal, close it
@@ -37,6 +38,7 @@ $(document).ready(function() {
             $('#modalBudName').html(" ");
             $('#modalBudAOS').html(" ");
             $('#modalBudEmail').html(" ");
+            $('#modalBudLocation').html(" ");
         }
     }
 
@@ -71,25 +73,19 @@ $(document).on('click', '#buddySubmitBtn', function(event){
                 var li = $("<li>")
                 li.addClass('pane');
                 var imgDiv = $("<div>")
-                //.css('background-image','url("' + userArr[i].photo + '")')
                 var profDiv = $("<div>");
-                // var likeDiv = $("<div>").addClass("like");
-                // var dislikeDiv = $("<div>").addClass("dislike");
-                
                 var btn = $("<button>")
                 btn.attr('id', 'connect').attr('data-email', buddyData[i].email).html("Connect<a href='#'></a>");
 
                 imgDiv.addClass("img").appendTo(li);
                 profDiv.addClass("info").html(
-                    "<img src='"+ buddyData[i].photo +"'>" + "<br>" + 
+                    "<img class='prof-imgs' src='"+ buddyData[i].photoURL +"'>" + "<br>" + 
                     "<p>" + buddyData[i].firstName + " " + buddyData[i].lastName + "</p>" + "<br>" +
                     "<p>" + buddyData[i].AOS + "</p>" +
                     "<p>" + buddyData[i].city + ", " + buddyData[i].state + "</p>" +
                     "<p>" + buddyData[i].school + "</p>"
                 ).appendTo(li);
                 btn.appendTo(li)
-                // likeDiv.appendTo(li);
-                // dislikeDiv.appendTo(li);
                 list.append(li);
             };
         }
@@ -140,6 +136,7 @@ function appendToModal(userObj) {
     $('#modalBudName').html(userObj.firstName + " " + userObj.lastName);
     $('#modalBudAOS').html(userObj.AOS);
     $('#modalBudEmail').html(userObj.email);
+    $('#modalBudLocation').html(userObj.city + ", " + userObj.state + " " + userObj.zipcode);
 }
 
     $(document).on('click', '#connect', function(event){

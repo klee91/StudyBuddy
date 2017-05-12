@@ -28,6 +28,13 @@ module.exports = function(sequelize, DataTypes) {
         len:[6]
       }
     },
+    photoURL: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isUrl: true
+      }
+    },
     state: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -40,6 +47,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         len: [1]
+      }
+    },
+    zipcode: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isNumeric: true, 
+        len: [5]
       }
     },
     age: {
