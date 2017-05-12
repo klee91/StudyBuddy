@@ -56,7 +56,7 @@ $(document).on('click', '#buddySubmitBtn', function(event){
 
     //filter users by study_subject and populate to buddifier
     getbuddies(academicSub);
-
+    $('#backdropdiv').removeClass('modalBackDrop');
     //clear filter input and hide modal
     $('#buddyFilter').val('');
     $('#filterModal').hide();
@@ -148,7 +148,7 @@ function appendToModal(userObj) {
     });
 
     //see profile button to redirect to selected user's profile page
-    $(document).on('click', '#seeProfile', function(event){
+    $(document).on('click', '#gotoProfile', function(event){
         event.preventDefault();
         var res = encodeURIComponent(userObjGlobal.email);
         window.location.href = "/profile?email=" + res;

@@ -163,55 +163,56 @@
 </div>
 		{{{ body }}}
 <script>
-    $(document).ready(function() {
-	$('#chatTxt').css("visibility","hidden");
-	$('#profileTxt').css("visibility","hidden");
-	$('#logOutTxt').css("visibility","hidden");
-	$('#settingsTxt').css("visibility","hidden");
-  $('#studyBuddyTxt').css("visibility","hidden");
+$(document).ready(function() {
+	$('#chatTxt').css("display","none");
+	$('#profileTxt').css("display","none");
+	$('#logOutTxt').css("display","none");
+	$('#settingsTxt').css("display","none");
+  $('#studyBuddyTxt').css("display","none");
 });
 
 // Hover function for circle menu
 //-----------------------START---------------------------
-$('#seeStudybuddy').mouseover(function() {
-  $('#studyBuddyTxt').css("visibility","visible");
-});
+function mousein1() {
+$('#studyBuddyTxt').fadeIn("fast")
+}
+function mouseout1() {
+$('#studyBuddyTxt').css("display","none")
+}
 
-$('#seeStudybuddy').mouseout(function() {
-  $('#studyBuddyTxt').css("visibility","hidden");
-});
+function mousein2() {
+$('#chatTxt').fadeIn("fast")
+}
+function mouseout2() {
+$('#chatTxt').css("display","none")
+}
 
-$('#seeChat').mouseover(function() {
-  $('#chatTxt').css("visibility","visible");
-});
+function mousein3() {
+$('#profileTxt').fadeIn("fast")
+}
+function mouseout3() {
+$('#profileTxt').css("display","none")
+}
 
-$('#seeChat').mouseout(function() {
-  $('#chatTxt').css("visibility","hidden");
-});
+function mousein4() {
+$('#logOutTxt').fadeIn("fast")
+}
+function mouseout4() {
+$('#logOutTxt').css("display","none")
+}
 
-$('#seeProfile').mouseover(function() {
-  $('#profileTxt').css("visibility","visible");
-});
+function mousein5() {
+$('#settingsTxt').fadeIn("fast")
+}
+function mouseout5() {
+$('#settingsTxt').css("display","none")
+}
 
-$('#seeProfile').mouseout(function() {
-  $('#profileTxt').css("visibility","hidden");
-});
-
-$('#btnLogout').mouseover(function() {
-  $('#logOutTxt').css("visibility","visible");
-});
-
-$('#btnLogout').mouseout(function() {
-  $('#logOutTxt').css("visibility","hidden");
-});
-
-$('#seeSettings').mouseover(function() {
-  $('#settingsTxt').css("visibility","visible");
-});
-
-$('#seeSettings').mouseout(function() {
-  $('#settingsTxt').css("visibility","hidden");
-});
+$('#seeStudybuddy').hover( mousein1 , mouseout1);
+$('#seeChat').hover( mousein2 , mouseout2);
+$('#seeProfile').hover( mousein3 , mouseout3);
+$('#btnLogout').hover( mousein4 , mouseout4);
+$('#seeSettings').hover( mousein5 , mouseout5);
 //-----------------------END---------------------------
 </script>
 	</body>
