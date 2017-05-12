@@ -102,4 +102,11 @@ auth.onAuthStateChanged(function(user) {
     console.log('user', user);
     console.log(user.email);
 
+
+});
+
+$(document).on("click", "#btnSettings", function(event){
+    event.preventDefault();
+
+    window.location.href = "/settings";
 });
