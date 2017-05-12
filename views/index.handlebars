@@ -13,8 +13,7 @@
 							  	<ul class="menu">
 							    <li class="menuitem-wrapper">
 							      <div class="icon-holder">
-							        <a href="/chat" class="menu-item" id="seeChat">
-							        <a href="#" class="menu-item" id="seeChat chatRoom">
+							        <a href="#" class="menu-item" id="seeChat">
 							        <i class="fa fa-weixin" aria-hidden="true"></i>
 							        </a>
 							      </div>
@@ -24,13 +23,13 @@
 							      </svg>
 							    </li>
 							    <li class="menuitem-wrapper">
-
 							      <div class="icon-holder" >
 							        <a href="#" class="menu-item" id="btnLogout">
 							        	<i class="material-icons">
+
 							            <i class="fa fa-sign-out" aria-hidden="true"></i>
 
-							        
+							           	</i>
 							        </a>
 							      </div>
 							      <svg class="circle-holder">
@@ -40,7 +39,6 @@
 							    </li>
 							    <li class="menuitem-wrapper">
 							      <div class="icon-holder">
-
 							        <a href="#" class="menu-item" id="seeProfile">
 							            <i class="fa fa-user" aria-hidden="true"></i>
 							        </a>
@@ -63,7 +61,7 @@
 							    </li>
 							    <li class="menuitem-wrapper">
 							      <div class="icon-holder">
-							        <a href="/settings" class="menu-item" id="seeSettings">
+							        <a href="#" class="menu-item" id="seeSettings">
 							            <i class="fa fa-cog" aria-hidden="true"></i>
 							        </a>
 							      </div>
@@ -125,25 +123,6 @@
 <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
 <script src="js/app.js"></script>
 <script>
- $(document).on('click', '#seeSettings', function(event){
-        event.preventDefault();
-        window.location.href = "/settings";
-         // + userObjGlobal.email;
-  });
-
- $(document).on('click', '#seeProfile', function(event){
-        event.preventDefault();
-        window.location.href = "/profile" ;
-  });
-
- $(document).on('click', '#seeStudybuddy', function(event){
-        event.preventDefault();
-        window.location.href = "/studybuddy";
-  });
- $(document).on('click', '#seeChat', function(event){
-        event.preventDefault();
-        window.location.href = "/chat";
-  });
 
 var widget = $('.circlemenu');
 
