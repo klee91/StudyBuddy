@@ -105,7 +105,7 @@ auth.onAuthStateChanged(function(user) {
 
 });
 
-document.on("click", "#btnSettings", function(event){
+$(document).on("click", "#btnSettings", function(event){
     event.preventDefault();
 
     window.location.href = "/settings";

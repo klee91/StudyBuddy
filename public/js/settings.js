@@ -87,8 +87,8 @@ auth.onAuthStateChanged(function(user) {
     };
 
     list.empty();
-    console.log(rowsToAdd);
-    console.log(list);
+    // console.log(rowsToAdd);
+    // console.log(list);
     list.append(rowsToAdd);
     list.val(rowsToAdd);
   };

@@ -37,6 +37,7 @@ module.exports = function(app) {
     }).then(function(dbBuddy) {
       console.log(dbBuddy);
       res.json(dbBuddy);
+
     });
   });
 
