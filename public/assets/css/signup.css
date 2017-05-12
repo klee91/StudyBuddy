@@ -1,0 +1,16 @@
+#signUp {
+	font-family: 'Pacifico', cursive;
+	font-size: 80px;
+}
+
+body {
+	background-color: #823bed;
+}
+
+#sign {
+	background-color: white;
+	border-radius: 8px;
+	margin: 12px;
+	padding: 12px;
+	margin-top: 20px;
+}
