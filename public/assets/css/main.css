@@ -1,0 +1,16 @@
+body {
+	background-color: #1e59ff;
+}
+
+.jumbotron {
+	color: #1effe5;
+	background-color: #f9e495;	
+}
+
+#loginEmail {
+	color: black;
+}
+
+#loginPassword {
+	color: black;
+}

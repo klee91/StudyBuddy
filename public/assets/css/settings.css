@@ -1,0 +1,21 @@
+#edit {
+	font-family: 'Pacifico', cursive;
+	font-size: 80px;
+}
+
+body {
+	background-color: #f91111;
+}
+
+#foot {
+	display: inline-flex;
+	margin-left: 40%;
+	margin-top: 20px;
+}
+
+#editForm {
+	background-color: white;
+	border-radius: 8px;
+	padding: 12px;
+	margin-top: 20px;
+}
