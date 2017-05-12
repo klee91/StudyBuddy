@@ -100,10 +100,7 @@ auth.onAuthStateChanged(function(user) {
 
   // If we have this section in our url, we pull out the post id from the url
   // In '?post_id=1', postId is 1
-  if (url.indexOf("?email") !== -1) {
-    emailParam = url;
-    console.log("emailParam:" + emailParam);
-  }
+ 
 
 // A function for handling what happens when the form to create a new post is submitted
   function handleFormUpdate(event) {
