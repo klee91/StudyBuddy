@@ -39,14 +39,15 @@ $(document).ready(function() {
   function getcurrentUser(email) {
     
     $.get("/api/buddies/" + email, function(data) {
-        if (data === false) {
-            return "No buddy found!";
-        }
-        else {
-            console.log("profile data: " + data);
+        if (data) {
+
+             console.log("profile data: " + data);
             fullName.html(data.firstName + " " + data.lastName);
             userEmail.html(data.email);
+
+
             $('#profilePhoto').html("<img src='"+ data.photoURL +"' style='width:200px;'>");
+
             state.html(data.state);
             city.html(data.city);
             zipCode.html(data.zipcode);
@@ -56,23 +57,74 @@ $(document).ready(function() {
             school.html(data.school);
             aos.html(data.aos);
             study.html(data.study_subject);
+
+            var address;
+            var geoURL;
+            var map;
+            address = data.zipcode;
+            console.log(address);
+            geoURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyCaH_RlCTO1tD0nUfUg89kXlxymHQGYYyM";
+            console.log(geoURL);
+
+             $.ajax({
+              url: geoURL,
+              method: "GET"
+            }).done(function(response){
+
+            console.log(response);
+            console.log(response.results[0].geometry.location.lat);
+            console.log(response.results[0].geometry.location.lng);
+
+            var center_lat = response.results[0].geometry.location.lat;
+            var center_long = response.results[0].geometry.location.lng;
+            var center_coord = new google.maps.LatLng(center_lat, center_long);
+            
+            //creating map and centering it on the coordinates
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: center_lat, lng: center_long},
+              zoom: 12
+            });
+
+            //place marker on input location
+            var marker = new google.maps.Marker({
+              position: center_coord,
+              map: map,
+              animation: google.maps.Animation.DROP,
+              icon: '../assets/images/ic_home_black_24dp_1x.png',
+              });
+
+        });
+        }
+        else {
+            return "No buddy found!";
         }
     })
   }
 
-	function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
+
+ 
+
+    //labels for markers on the map
+  var markers = [];
+  var labels = 'AB';
+  var labelIndex = 0;
+  var ab = ["A","B"];
+
+  //function to delete markers
+  function deleteMarker(markerIndex){
+    markers[markerIndex].setMap(null);
+    labelIndex = 0;
+  };
+
+    //take input and make it usable in URL
+   
+    // address = address.replace(/\s/g, "+");
+
+
 
 });
 
-
-
+function createMap(){
+    //ajax request to take geoURL and get the coordinates of the location you entered
+  
+      };
