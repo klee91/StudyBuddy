@@ -13,7 +13,7 @@
 							  	<ul class="menu">
 							    <li class="menuitem-wrapper">
 							      <div class="icon-holder">
-							        <a href="#" class="menu-item">
+							        <a href="#" id="chatRoom" class="menu-item">
 							        <i class="fa fa-weixin" aria-hidden="true"></i>
 							        </a>
 							      </div>
@@ -24,12 +24,11 @@
 							    </li>
 							    <li class="menuitem-wrapper">
 							      <div class="icon-holder">
-							        <a href="#" class="menu-item">
-							        	<i class="material-icons">
+							        <a href="#" id="btnLogout" class="menu-item">
 
-							            <i class="fa fa-sign-out" aria-hidden="true" id="btnLogout"></i>
+							            <i class="fa fa-sign-out" aria-hidden="true"></i>
 
-							           	</i>
+							        
 							        </a>
 							      </div>
 							      <svg class="circle-holder">
@@ -39,8 +38,8 @@
 							    </li>
 							    <li class="menuitem-wrapper">
 							      <div class="icon-holder">
-							        <a href="#" class="menu-item">
-							            <i class="fa fa-user" aria-hidden="true" id="seeProfile"></i>
+							        <a href="#" id="seeProfile" class="menu-item">
+							            <i class="fa fa-user" aria-hidden="true"></i>
 							        </a>
 							      </div>
 							      <svg class="circle-holder">
@@ -50,8 +49,8 @@
 							    </li>
 							    <li class="menuitem-wrapper">
 							      <div class="icon-holder">
-							        <a href="#" class="menu-item">
-							            <i class="fa fa-map-marker" aria-hidden="true" id="seeStudybuddy"></i>
+							        <a href="#" id="seeStudybuddy" class="menu-item">
+							            <i class="fa fa-map-marker" aria-hidden="true"></i>
 							        </a>
 							      </div>
 							      <svg class="circle-holder">
@@ -126,7 +125,12 @@
 <script>
  $(document).on('click', '#seeSettings', function(event){
         event.preventDefault();
-        window.location.href = "/settings/" + userObjGlobal.email;
+        window.location.href = "/settings";
+  });
+
+  $(document).on('click', '#chatRoom', function(event){
+        event.preventDefault();
+        window.location.href = "/chat";
   });
 
  $(document).on('click', '#seeProfile', function(event){

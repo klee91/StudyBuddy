@@ -6,17 +6,16 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
-      #messages { margin-bottom: 40px; height: 20vh; overflow: auto; }
+      #messages { margin-bottom: 40px; height: 140px; overflow: auto; }
 
   #chatbox {
   	border : 3px solid black;
   	border-radius: 5px;
-  	margin-top: 8vh;
+  	margin-top: 20px;
   	position:fixed;
   }
 
 	#info {
-		margin-top: 20vh;
 		font-family: 'Pacifico', cursive;
 		font-size: 100px;
 	}
