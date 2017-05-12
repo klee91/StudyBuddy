@@ -11,7 +11,11 @@
     "mysql": "^2.13.0",
     "path": "^0.12.7",
     "sequelize": "^3.30.4",
+<<<<<<< HEAD
     "socket.io": "1.7.3"
+=======
+    "socket.io": "^1.7.3"
+>>>>>>> 6c7b19865439bde532b4cef69c2afaef936baabb
   },
   "devDependencies": {},
   "scripts": {
