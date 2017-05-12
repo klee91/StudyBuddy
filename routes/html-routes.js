@@ -42,12 +42,9 @@ module.exports = function(app) {
   });
 
   app.get('/chat', function(req, res){
-<<<<<<< HEAD
   // res.sendFile(path.resolve("./chat.html"));
      res.render("chat");
-=======
-  res.render("chat");
->>>>>>> 6c7b19865439bde532b4cef69c2afaef936baabb
+
 });
 
 };
