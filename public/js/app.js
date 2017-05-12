@@ -89,4 +89,6 @@ auth.onAuthStateChanged(function(user) {
 
 document.on("click", "#btnSettings", function(event){
     event.preventDefault();
+
+    window.href
 });
