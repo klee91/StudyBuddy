@@ -1,4 +1,13 @@
 <link rel="stylesheet" href="../public/assets/css/settings.css">
+<style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+       #location-input{
+        color: black;
+       }
+    </style>
 
 <div class="container col-xs-8 col-xs-offset-5">
     <h1><span id="profile">Profile</span></h1>
@@ -14,7 +23,7 @@
 						<label for="email">Email:</label>
 						<p  id="email" name="email"> </p>
 						<br />
-						<label for="photo"> </label>
+						<label for="photo">Profile Picture: </label>
 						<div id="profilePhoto"></div>
             <label for="city">City:</label>
 						<p  id="city" name="city"> </p>
@@ -52,10 +61,10 @@
 <footer>
 	<p class="text-center" id="footer">© Copyright StudyBuddy 2017</p>
 </footer>
-<script src="js/profile.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!--Google Maps API-->
-<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- Firebase script -->
 <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
@@ -68,3 +77,4 @@ $('.menu-item').on('click', function(){
 	
 })
 </script>
+
