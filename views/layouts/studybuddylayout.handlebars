@@ -5,29 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The Buddifier</title>
-
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <!-- jQuery lib -->
     <script
     src="http://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
+		<script src="js/script.js"></script>
     <script src="https://use.fontawesome.com/6075022657.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 </head>
 <style>
-body {
-    background-color: #ffd82d;
-}
 p {
     font-size: 10pt;
 }
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 2; /* Sit on top */
+    z-index: 3; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -86,8 +83,79 @@ li {
     height: 100%;
     width: 200px;
 }
+.menu-btn {
+	z-index: 1;
+}
+.modalBackDrop {
+	z-index:2;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color:#464646;
+	opacity: 0.75;
+	background-repeat: repeat;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+ #chatTxt {
+    display: block;
+    position: relative;
+    bottom: 220px;
+  }
+
+  #profileTxt {
+    display: block;
+    position: relative;
+    right: 30px;
+    bottom: 220px;
+    -webkit-transform: rotate(-143deg);
+    -moz-transform: rotate(-143deg);
+    -o-transform: rotate(-143deg);
+    -ms-transform: rotate(-143deg);
+    transform: rotate(-143deg);
+  }
+
+  #logOutTxt {
+    display: block;
+    position: relative;
+    width: 50px;
+    left: 30px;
+    bottom: 225px;
+    -webkit-transform: rotate(-71deg);
+    -moz-transform: rotate(-71deg);
+    -o-transform: rotate(-71deg);
+    -ms-transform: rotate(-71deg);
+    transform: rotate(-71deg);
+  }
+
+  #settingsTxt {
+    display: block;
+    position: relative;
+    right: 33px;
+    bottom: 230px;
+    -webkit-transform: rotate(75deg);
+    -moz-transform: rotate(75deg);
+    -o-transform: rotate(75deg);
+    -ms-transform: rotate(75deg);
+    transform: rotate(75deg);
+  }
+
+  #studyBuddyTxt {
+    display: block;
+    position: relative;
+    left: 43px;
+    bottom: 220px;
+    -webkit-transform: rotate(146deg);
+    -moz-transform: rotate(146deg);
+    -o-transform: rotate(146deg);
+    -ms-transform: rotate(146deg);
+    transform: rotate(146deg);
+  }
+  
 </style>
 <body>
+		<!--backdrop when first modal is up -->
+<div class="modalBackDrop" id="backdropdiv"></div>
     <div class="menucontainer" id="circlemenueffect">
 							<!-- ******************************** -->
 							<!-- Circle Menu START -->
@@ -173,55 +241,56 @@ li {
     {{{body}}}
 
 <script>
-    $(document).ready(function() {
-	$('#chatTxt').css("visibility","hidden");
-	$('#profileTxt').css("visibility","hidden");
-	$('#logOutTxt').css("visibility","hidden");
-	$('#settingsTxt').css("visibility","hidden");
-  $('#studyBuddyTxt').css("visibility","hidden");
+$(document).ready(function() {
+	$('#chatTxt').css("display","none");
+	$('#profileTxt').css("display","none");
+	$('#logOutTxt').css("display","none");
+	$('#settingsTxt').css("display","none");
+  $('#studyBuddyTxt').css("display","none");
 });
 
 // Hover function for circle menu
 //-----------------------START---------------------------
-$('#seeStudybuddy').mouseover(function() {
-  $('#studyBuddyTxt').css("visibility","visible");
-});
+function mousein1() {
+$('#studyBuddyTxt').fadeIn("fast")
+}
+function mouseout1() {
+$('#studyBuddyTxt').css("display","none")
+}
 
-$('#seeStudybuddy').mouseout(function() {
-  $('#studyBuddyTxt').css("visibility","hidden");
-});
+function mousein2() {
+$('#chatTxt').fadeIn("fast")
+}
+function mouseout2() {
+$('#chatTxt').css("display","none")
+}
 
-$('#seeChat').mouseover(function() {
-  $('#chatTxt').css("visibility","visible");
-});
+function mousein3() {
+$('#profileTxt').fadeIn("fast")
+}
+function mouseout3() {
+$('#profileTxt').css("display","none")
+}
 
-$('#seeChat').mouseout(function() {
-  $('#chatTxt').css("visibility","hidden");
-});
+function mousein4() {
+$('#logOutTxt').fadeIn("fast")
+}
+function mouseout4() {
+$('#logOutTxt').css("display","none")
+}
 
-$('#seeProfile').mouseover(function() {
-  $('#profileTxt').css("visibility","visible");
-});
+function mousein5() {
+$('#settingsTxt').fadeIn("fast")
+}
+function mouseout5() {
+$('#settingsTxt').css("display","none")
+}
 
-$('#seeProfile').mouseout(function() {
-  $('#profileTxt').css("visibility","hidden");
-});
-
-$('#btnLogout').mouseover(function() {
-  $('#logOutTxt').css("visibility","visible");
-});
-
-$('#btnLogout').mouseout(function() {
-  $('#logOutTxt').css("visibility","hidden");
-});
-
-$('#seeSettings').mouseover(function() {
-  $('#settingsTxt').css("visibility","visible");
-});
-
-$('#seeSettings').mouseout(function() {
-  $('#settingsTxt').css("visibility","hidden");
-});
+$('#seeStudybuddy').hover( mousein1 , mouseout1);
+$('#seeChat').hover( mousein2 , mouseout2);
+$('#seeProfile').hover( mousein3 , mouseout3);
+$('#btnLogout').hover( mousein4 , mouseout4);
+$('#seeSettings').hover( mousein5 , mouseout5);
 //-----------------------END---------------------------
 </script>
 </body>

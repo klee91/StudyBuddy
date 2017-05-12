@@ -77,10 +77,10 @@ $(document).on('click','#btnLogout', function(event) {
 auth.onAuthStateChanged(function(user) { 
     if(user) {
         $('.circlemenu').show();
-        // $(document).on('click', '#seeProfile', function(event){
-        //     event.preventDefault();
-        //     window.location.href = "/profile?email=" + user.email;
-        // });
+        $(document).on('click', '#seeProfile', function(event){
+            event.preventDefault();
+            window.location.href = "/profile?email=" + user.email;
+        });
         $(document).on('click', '#seeSettings', function(event){
             event.preventDefault();
             window.location.href = "/settings";
