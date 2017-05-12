@@ -1,6 +1,6 @@
 $(document).ready(function() {
   console.log("page is ready");
-  // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
+  
   var emailParam;
   var buddyId;
 
@@ -29,7 +29,6 @@ $(document).ready(function() {
     }
 
     emailParam = decodeURIComponent(getQueryVariable("email"));
-    // emailParam = decodeURIComponent(emailParam);
     console.log("emailParam: "+ emailParam);
 
   // Getting buddy data by email
