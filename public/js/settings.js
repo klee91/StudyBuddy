@@ -19,6 +19,7 @@
 
   var currentid;
   var isZip = false;
+
 //add a realtime listener
 auth.onAuthStateChanged(function(user) { 
     if(user) {
@@ -89,8 +90,6 @@ auth.onAuthStateChanged(function(user) {
     };
 
     list.empty();
-    // console.log(rowsToAdd);
-    // console.log(list);
     list.append(rowsToAdd);
     list.val(rowsToAdd);
   };
@@ -98,10 +97,13 @@ auth.onAuthStateChanged(function(user) {
   // Sets a flag for whether or not we're updating info to be false initially
   var updating = true;
 
+<<<<<<< HEAD
   // If we have this section in our url, we pull out the post id from the url
   // In '?post_id=1', postId is 1
  
 
+=======
+>>>>>>> c2cb4a291566513100ba3a93698295883f9e2391
 // A function for handling what happens when the form to create a new post is submitted
   function handleFormUpdate(event) {
     // Wont submit the post if we are missing a body, title, or author
@@ -110,7 +112,7 @@ auth.onAuthStateChanged(function(user) {
     }
     
     //if not a valid zip code, will not submit
-    if ( validateZIP(zipCode.val().trim()) == false) {
+    if ( validateZIP(zipCode.val()) == false) {
       alert("Zip code is incorrect");
       return ;
     }

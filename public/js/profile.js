@@ -1,8 +1,9 @@
 $(document).ready(function() {
+
   console.log("page is ready");
   
   var emailParam;
-  var buddyId;
+  var profileLocation;
 
   var fullName = $("#fullName");
   var userEmail = $("#email");
@@ -45,7 +46,11 @@ $(document).ready(function() {
             console.log("profile data: " + data);
             fullName.html(data.firstName + " " + data.lastName);
             userEmail.html(data.email);
+<<<<<<< HEAD
             $('#profilePhoto').html("<img src='"+ data.photoURL +"'>");
+=======
+            $('#profilePhoto').html("<img src='"+ data.photoURL +"' style='width:200px;'>");
+>>>>>>> c2cb4a291566513100ba3a93698295883f9e2391
             state.html(data.state);
             city.html(data.city);
             zipCode.html(data.zipcode);
@@ -59,7 +64,11 @@ $(document).ready(function() {
     })
   }
 
+<<<<<<< HEAD
   function initMap() {
+=======
+	function initMap() {
+>>>>>>> c2cb4a291566513100ba3a93698295883f9e2391
         var uluru = {lat: -25.363, lng: 131.044};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
