@@ -1,3 +1,137 @@
+
+<div class="menucontainer" id="circlemenueffect">
+							<!-- ******************************** -->
+							<!-- Circle Menu START -->
+							<div class="circlemenu">	
+								<nav class="menu-wrapper">
+							 	<button class="menu-btn" has-ripple="true">
+							    <i></i>
+							    <i></i>
+							    <i></i>
+							    <span class="ripple"></span>
+							  	</button>
+							  	<ul class="menu">
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="#" class="menu-item">
+							        <i class="fa fa-weixin" aria-hidden="true"></i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder" >
+							        <a href="#" class="menu-item" id="btnLogout">
+							        	<i class="material-icons">
+
+							            <i class="fa fa-sign-out" aria-hidden="true"></i>
+
+							           	</i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="#" class="menu-item">
+							            <i class="fa fa-user" aria-hidden="true" id="seeProfile"></i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="#" class="menu-item">
+							            <i class="fa fa-map-marker" aria-hidden="true" id="seeStudybuddy"></i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							    <li class="menuitem-wrapper">
+							      <div class="icon-holder">
+							        <a href="#" class="menu-item" id="seeSettings">
+							            <i class="fa fa-cog" aria-hidden="true"></i>
+							        </a>
+							      </div>
+							      <svg class="circle-holder">
+							        <circle r="88" cx="50%" cy="50%" fill="none">
+							        </circle>
+							      </svg>
+							    </li>
+							  	</ul>
+								</nav>
+							</div>
+							<!-- ******************************** -->
+							<!-- Circle Menu END -->
+</div>
+
+<div class="container col-xs-8 col-xs-offset-2">
+    <h1>Profile</h1>
+</div>
+<div class="container col-xs-8 col-xs-offset-2" id="main">
+    <div id="profileDiv" class="container col-xs-12">
+        <div class="row">
+			<div class="col-md-10 col-md-offset-1">
+					<div>
+						<label for="fullName">Name:</label>
+						<p  id="fullName" name="fullName"> </p>
+						<br />
+						<label for="email">Email:</label>
+						<p  id="email" name="email"> </p>
+						<br />
+                        <label for="city">City:</label>
+						<p  id="city" name="city"> </p>
+						<br />
+						<label for="state">State:</label>
+                        <p id="state" name="state">  </p>
+						<br />
+						<label for="age">Age:</label>
+						<p  id="age" name ="age"> </p>
+						<br />
+						<label for="phone">Phone Number:</label>
+						<p  id="phone" name="phone">  </p>
+						<br />
+						<label for="gender">Gender:</label>
+						<p  id="gender" name="gender">  </p>
+						<br />
+						<label for="school">School:</label>
+						<p  id="school" name="school">  </p>
+						<br />
+						<label for="aos">Area of Study:</label>
+						<p id="aos" name="aos"> </p>
+                        <label for="study">Study Subject:</label>
+                        <p id="study" name="study">  </p>
+						<br />
+					</div>
+				</form>
+			</div>
+		</div>
+    </div>
+</div>
+<footer>
+	<p class="text-center">© Copyright StudyBuddy 2017</p>
+</footer>
+<script src="js/profile.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- Firebase script -->
 <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
 <script src="js/app.js"></script>
+<script>
+var widget = $('.circlemenu');
+
+$('.menu-item').on('click', function(){
+	
+})
+</script>
