@@ -42,7 +42,8 @@ module.exports = function(app) {
   });
 
   app.get('/chat', function(req, res){
-  res.sendFile(path.resolve("./public/chatroom/chat.html"));
+  // res.sendFile(path.resolve("./chat.html"));
+     res.render("chat");
 });
 
 };

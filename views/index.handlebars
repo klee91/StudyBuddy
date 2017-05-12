@@ -13,7 +13,7 @@
 							  	<ul class="menu">
 							    <li class="menuitem-wrapper">
 							      <div class="icon-holder">
-							        <a href="#" class="menu-item">
+							        <a href="/chat" class="menu-item" id="btnChat">
 							        <i class="fa fa-weixin" aria-hidden="true"></i>
 							        </a>
 							      </div>
@@ -61,7 +61,7 @@
 							    </li>
 							    <li class="menuitem-wrapper">
 							      <div class="icon-holder">
-							        <a href="#" class="menu-item" id="seeSettings">
+							        <a href="/settings" class="menu-item" id="seeSettings">
 							            <i class="fa fa-cog" aria-hidden="true"></i>
 							        </a>
 							      </div>
@@ -126,7 +126,8 @@
 <script>
  $(document).on('click', '#seeSettings', function(event){
         event.preventDefault();
-        window.location.href = "/settings/" + userObjGlobal.email;
+        window.location.href = "/settings";
+         // + userObjGlobal.email;
   });
 
  $(document).on('click', '#seeProfile', function(event){
@@ -134,9 +135,13 @@
         window.location.href = "/profile" ;
   });
 
-	 $(document).on('click', '#seeStudybuddy', function(event){
+ $(document).on('click', '#seeStudybuddy', function(event){
         event.preventDefault();
         window.location.href = "/studybuddy";
+  });
+ $(document).on('click', '#btnChat', function(event){
+        event.preventDefault();
+        window.location.href = "/chat";
   });
 
 var widget = $('.circlemenu');
