@@ -30,8 +30,6 @@ auth.onAuthStateChanged(function(user) {
         $.get(queryUrl, function(data) {
             console.log(data);
 
-            //handlebars code to put data onto settings.handlebars//
-          console.log(data.id || data.id);
         // If this post exists, prefill our cms forms with its data
         firstInput.val(data.firstName);
         lastInput.val(data.lastName);
