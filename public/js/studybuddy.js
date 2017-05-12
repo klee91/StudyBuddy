@@ -1,33 +1,4 @@
 
-/**
- * jTinder initialization
- */
-// $("#tinderslide").jTinder({
-// 	// dislike callback
-//     onDislike: function (item) {
-// 	    // set the status text
-//         $('#status').html('Dislike buddy ' + (item.index()+1));
-//     },
-// 	// like callback
-//     onLike: function (item) {
-// 	    // set the status text
-//         $('#status').html('Like buddy ' + (item.index()+1));
-//     },
-// 	animationRevertSpeed: 200,
-// 	animationSpeed: 400,
-// 	threshold: 1,
-// 	likeSelector: '.like',
-// 	dislikeSelector: '.dislike'
-// });
-
-/**
- * Set button action to trigger jTinder like & dislike.
- */
-// $('.actions .like, .actions .dislike').click(function(e){
-// 	e.preventDefault();
-// 	$("#tinderslide").jTinder($(this).attr('class'));
-// });
-
 $(document).ready(function() {
 
     console.log("page is ready");
@@ -98,7 +69,7 @@ $(document).on('click', '#buddySubmitBtn', function(event){
             for (var i = 0; i < buddyData.length; i++) {
                 
                 var li = $("<li>")
-                li.addClass('pane' + (i + 1));
+                li.addClass('pane');
                 var imgDiv = $("<div>")
                 //.css('background-image','url("' + userArr[i].photo + '")')
                 var profDiv = $("<div>");
@@ -173,8 +144,6 @@ function appendToModal(userObj) {
 
     $(document).on('click', '#connect', function(event){
         event.preventDefault();
-        // $('#tinderSlide').css('z-index', '1');
-        // $("#tinderslide").jTinder('like');
         // When the user clicks on the button, open the modal
         modal1.style.display = "block";
         userEmail = $(this).attr('data-email');
@@ -185,7 +154,7 @@ function appendToModal(userObj) {
     $(document).on('click', '#seeProfile', function(event){
         event.preventDefault();
         var res = encodeURIComponent(userObjGlobal.email);
-        window.location.href = "/profile/" + res;
+        window.location.href = "/profile?email=" + res;
     });
 
 });

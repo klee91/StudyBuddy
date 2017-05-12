@@ -1,61 +1,22 @@
-// *****************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-//
-// ******************************************************************************
-// *** Dependencies
-// =============================================================
-var express = require("express");
-var bodyParser = require("body-parser");
-
-// Sets up the Express App
-// =============================================================
+var express = require('express');
 var app = express();
-var PORT = process.env.PORT || 8080;
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var port = process.env.PORT || 3000;
 
-// Sets up the Express Handlebars.js
-// =============================================================
-var exphbs = require("express-handlebars");
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/chat.html');
+});
 
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+app.use(express.static("./"))
 
-server.listen(80);
-
-io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+    console.log("socket connection worjing")
   });
 });
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-
-var db = require("./models");
-
-// Sets up the Express app to handle data parsing
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
-
-// Static directory
-app.use(express.static("./public"));
-app.use(express.static("./public/chatroom/styles"))
-// Routes =============================================================
-
-require("./routes/buddy-api-routes.js")(app);
-require("./routes/html-routes.js")(app);
-require("./routes/signup-api-routes.js")(app);
-require("./public/chatroom")(app);
-// require("./routes/author-api-routes.js")(app);
-
-// Syncing our sequelize models and then starting our express app
-db.sequelize.sync({}).then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
+http.listen(port, function(){
+  console.log('listening on *:' + port);
 });
-

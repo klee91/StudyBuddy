@@ -1,7 +1,6 @@
-$(document).ready(function() {
+ $(document).ready(function() {
   console.log("page is ready");
 
-  // Getting jQuery references to the post body, title, form, and author select
   var firstInput = $("#firstname");
   var lastInput = $("#lastname");
   var emailInput = $("#loginEmail");
@@ -10,11 +9,53 @@ $(document).ready(function() {
   var cityInput = $("#city");
   var ageInput = $("#age");
   var phoneInput = $("#phone");
-  var editForm = $("#editForm");
+  var signupForm = $("#signup");
   var genderSelect = $("#gender");
   var schoolInput = $("#school");
   var aoeInput = $("#aos");
   var studySelect = $("#study");
+
+  var currentid;
+
+//add a realtime listener
+auth.onAuthStateChanged(function(user) { 
+    if(user) {
+        $('#btnLogout').removeClass("hide");
+
+        var queryUrl = "api/buddies/" + user.email;  
+
+        $.get(queryUrl, function(data) {
+            console.log(data);
+
+            //handlebars code to put data onto settings.handlebars//
+          console.log(data.id || data.id);
+        // If this post exists, prefill our cms forms with its data
+        firstInput.val(data.firstName);
+        lastInput.val(data.lastName);
+        emailInput.val(data.email);
+        passInput.val(data.password);
+        stateSelect.val(data.state);
+        cityInput.val(data.city);
+        ageInput.val(data.age);
+        phoneInput.val(data.phoneNumber);
+        genderSelect.val(data.gender);
+        schoolInput.val(data.school);
+        aoeInput.val(data.aos);
+        studySelect.val(data.study_subject);
+
+        currentid = data.id;
+        return currentid;
+            
+        });
+
+    } else {
+        console.log('Not logged in');
+        $('#btnLogout').addClass("hide");
+    }
+    console.log('user', user);
+
+ 
+    });
 
   //Arrays of vaules for state and gender drop down lists
   var states = ["AK","AL","AR","AZ","CA","CO","CT","DE","FL","GA","HI","IA","ID","IL","IN","KS",
@@ -53,7 +94,7 @@ $(document).ready(function() {
   };
 
   // Sets a flag for whether or not we're updating info to be false initially
-  var updating = false;
+  var updating = true;
 
   // If we have this section in our url, we pull out the post id from the url
   // In '?post_id=1', postId is 1
@@ -64,13 +105,14 @@ $(document).ready(function() {
 
 // A function for handling what happens when the form to create a new post is submitted
   function handleFormUpdate(event) {
-    event.preventDefault();
+
     // Wont submit the post if we are missing a body, title, or author
-    if (!titleInput.val().trim() || !bodyInput.val().trim() || !authorSelect.val()) {
+    if (!firstInput.val().trim() || !emailInput.val().trim() || !passInput.val()) {
       return;
     }
+
     // Constructing a newBuddyInfo object to hand to the database
-    var newBuddyInfo = {
+    var newBuddy = {
       firstName: firstInput.val().trim(),
       lastName: lastInput.val().trim(),
       email: emailInput.val().trim(),
@@ -81,26 +123,22 @@ $(document).ready(function() {
       phoneNumber: phoneInput.val().trim(),
       gender: genderSelect.val().trim(),
       school: schoolInput.val().trim(),
-      AOS: aosInput.val().trim(),
+      AOS: aoeInput.val().trim(),
       study_subject: studySelect.val().trim()
+    }
+
+      newBuddy.id = currentid;
+      console.log(newBuddy);
+
+      updateBuddy(newBuddy);
     };
-  
-    $(editForm).on("#btnUpdate", handleFormUpdate);
+
     // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
     $(document).on("click","#btnUpdate", function(event){
+
       event.preventDefault();
       handleFormUpdate();
     });
-    // If we're updating a post run updatePost to update a post
-    // Otherwise run submitPost to create a whole new post
-    if (updating) {
-      newPost.id = postId;
-      updatePost(newPost);
-    }
-    else {
-      submitPost(newPost);
-    }
-  }
 
   // Getting buddy data by email
   getcurrentUser(emailParam);
@@ -115,13 +153,6 @@ $(document).ready(function() {
         }
         else {
             console.log("data: " + data);
-            // for (var i = 0; i < data.length; i++) {
-            //     if (email === data[i].email) {
-            //         userObj = data[i];
-            //         console.log(userObj);
-            //         return;
-            //     }
-            // }
         }
     })
   }
@@ -134,59 +165,16 @@ $(document).ready(function() {
     return listOption;
   }
 
-});
-
-
-  // A function to get Authors and then render our list of Authors
-  // function getAuthors() {
-  //   $.get("/api/authors", renderAuthorList);
-  // }
-  // Function to either render a list of authors, or if there are none, direct the user to the page
-  // to create an author first
-  // function renderAuthorList(data) {
-  //   if (!data.length) {
-  //     window.location.href = "/authors";
-  //   }
-  //   $(".hidden").removeClass("hidden");
-  //   var rowsToAdd = [];
-  //   for (var i = 0; i < data.length; i++) {
-  //     rowsToAdd.push(createAuthorRow(data[i]));
-  //   }
-  //   authorSelect.empty();
-  //   console.log(rowsToAdd);
-  //   console.log(authorSelect);
-  //   authorSelect.append(rowsToAdd);
-  //   authorSelect.val(authorId);
-  // }
-
-  // Creates the author options in the dropdown
-  // function createAuthorRow(author) {
-  //   var listOption = $("<option>");
-  //   listOption.attr("value", author.id);
-  //   listOption.text(author.name);
-  //   return listOption;
-  // }
-
-  // Update a given post, bring user to the blog page when done
-//   function updatePost(post) {
-//     $.ajax({
-//       method: "PUT",
-//       url: "/api/posts",
-//       data: post
-//     })
-//     .done(function() {
-//       window.location.href = "/blog";
-//     });
-//   }
-// });
-
-
-// function getTodos() {
-//     $.get("/api/buddies", function(data) {
-//       console.log("Todos", data);
-//       todos = data;
-//       initializeRows();
-//     });
-//   }
-
-
+    function updateBuddy(buddy) {
+      var queryUrl = "/api/buddies/" + currentid;
+      $.ajax({
+        method: "PUT",
+        url: queryUrl,
+        data: buddy
+      })
+      .done(function() {
+        window.location.href = "/settings";
+        console.log("profile updated");
+      });
+    }
+    });

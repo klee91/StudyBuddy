@@ -50,7 +50,7 @@ app.get("/api/buddies/:username", function(req, res) {
 });
 
 // PUT route for updating specific buddy info
-    app.put("/api/buddies/:username", function(req, res) {
+    app.put("/api/buddies/:id", function(req, res) {
       var updateInfo = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -63,11 +63,11 @@ app.get("/api/buddies/:username", function(req, res) {
         gender: req.body.gender,
         school: req.body.school,
         AOS: req.body.aos,
-        study_subject: req.body.study,
+        study_subject: req.body.study_subject,
       }
       db.Buddy.update(updateInfo, {
         where: {
-          email: req.body.username
+          id: req.body.id
         }
       }).then(function(dbBuddy) {
         res.json(dbBuddy);

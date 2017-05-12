@@ -28,12 +28,11 @@ module.exports = function(app) {
   // });
 
   // Get rotue for retrieving buddy profile
-  app.get("/api/buddies/:id", function(req, res) {
-    // 2. Add a join here to include the Author who wrote the Post
+  app.get("/api/buddies/:email", function(req, res) {
     db.Buddy.findOne({
-      include: [db.firstName],
+      // include: [db.firstName],
       where: {
-        id: req.params.id
+        email: req.params.email
       }
     }).then(function(dbBuddy) {
       console.log(dbBuddy);
@@ -62,15 +61,14 @@ module.exports = function(app) {
   // });
 
   // PUT route for updating posts
-  app.put("/api/posts", function(req, res) {
-    db.Post.update(
-      req.body,
-      {
-        where: {
-          id: req.body.id
-        }
-      }).then(function(dbPost) {
-        res.json(dbPost);
-      });
-  });
+  // app.put("/api/buddies", function(req, res) {
+  //   db.Buddy.update(
+  //     {
+  //       where: {
+  //         id: req.body.id
+  //       }
+  //     }).then(function(dbBuddy) {
+  //       res.json(dbBuddy);
+  //     });
+  // });
 };
