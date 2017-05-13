@@ -97,7 +97,7 @@ $(document).ready(function() {
 
         });
 
-      var queryURL = "https://dry-plateau-27231.herokuapp.com/?limit=3&term=library&location=" + data.zipcode;
+      var queryURL = "https://dry-plateau-27231.herokuapp.com/?limit=3&term=libraries&location=" + data.zipcode;
 
       console.log(queryURL);
 
@@ -105,7 +105,7 @@ $(document).ready(function() {
       var addresses = [];
       var address_div = $("#closest").html();
       address_div = $("#closest").html("<div>");
-      address_div.append("<h1>Closest Libraries:</h1>");
+      address_div.append("<h3>Closest Libraries:</h3>");
 
       //ajax request 
       $.ajax({
@@ -128,9 +128,10 @@ $(document).ready(function() {
           console.log("longitude " + library_long);
           console.log("Address " + response_obj.businesses[i].location.address1 + " " + response_obj.businesses[0].location.city);
 
-          addresses[i] = response_obj.businesses[i].location.address1 + " " + response_obj.businesses[0].location.city;
+          // addresses[i] = response_obj.businesses[i].location.address1 + " " + response_obj.businesses[0].location.city;
+          addresses[i] = response_obj.businesses[i].name;
           var coordinates = new google.maps.LatLng(library_lat, library_long);
-
+          console.log(addresses[i]);
           //create marker for restaurant[i]
           var marker = new google.maps.Marker({
           position: coordinates,
@@ -144,10 +145,13 @@ $(document).ready(function() {
           }); 
           markers[i] = marker;
 
+        addressPlus = addresses[i].replace(/\s/g, "+");
 
           console.log(marker);
-          address_div.append("<h2>" + ab[i] + ": </h2>");
-          address_div.append("<h4>" + addresses[i] + "</h4>");
+          var newlibraryrow = $("<p>");
+          newlibraryrow.append("<a href='https://www.google.com/maps/place/" + addressPlus + "/' target='_blank' >" + ab[i] + ": " + addresses[i] + "</a>");
+          address_div.append(newlibraryrow);
+          
         }      
 
       });
