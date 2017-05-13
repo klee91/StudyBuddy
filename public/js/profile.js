@@ -94,6 +94,62 @@ $(document).ready(function() {
               });
 
         });
+
+      var queryURL = "https://dry-plateau-27231.herokuapp.com/?limit=3&term=library&location=" + data.zipcode;
+
+      console.log(queryURL);
+
+      
+      var addresses = [];
+      var address_div = $("#closest").html();
+      address_div = $("#closest").html("<div>");
+      address_div.append("<h1>Closest Libraries:</h1>");
+
+      //ajax request 
+      $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response){
+        response_obj = JSON.parse(response);
+        console.log(response_obj);
+
+
+        //for loop for limit of two closest restaurant locations
+        for (var i=0; i < 3; i++) {
+          
+
+          //taking library latitude and longitude and assigning to variables
+          library_lat = response_obj.businesses[i].coordinates.latitude;
+          library_long = response_obj.businesses[i].coordinates.longitude;
+
+          console.log("latitude " + library_lat);
+          console.log("longitude " + library_long);
+          console.log("Address " + response_obj.businesses[i].location.address1 + " " + response_obj.businesses[0].location.city);
+
+          addresses[i] = response_obj.businesses[i].location.address1 + " " + response_obj.businesses[0].location.city;
+          var coordinates = new google.maps.LatLng(library_lat, library_long);
+
+          //create marker for restaurant[i]
+          var marker = new google.maps.Marker({
+          position: coordinates,
+          label: {
+            text: labels[labelIndex++ % labels.length],
+            color: "white",
+          },
+          animation: google.maps.Animation.DROP,
+          icon: "../assets/images/book.png",
+          map: map
+          }); 
+          markers[i] = marker;
+
+
+          console.log(marker);
+          address_div.append("<h2>" + ab[i] + ": </h2>");
+          address_div.append("<h4>" + addresses[i] + "</h4>");
+        }      
+
+      });
+
         }
         else {
             return "No buddy found!";
@@ -101,14 +157,11 @@ $(document).ready(function() {
     })
   }
 
-
- 
-
     //labels for markers on the map
   var markers = [];
-  var labels = 'AB';
+  var labels = 'ABC';
   var labelIndex = 0;
-  var ab = ["A","B"];
+  var ab = ["A","B","C"];
 
   //function to delete markers
   function deleteMarker(markerIndex){
@@ -116,15 +169,11 @@ $(document).ready(function() {
     labelIndex = 0;
   };
 
-    //take input and make it usable in URL
-   
-    // address = address.replace(/\s/g, "+");
 
-
-
-});
-
-function createMap(){
-    //ajax request to take geoURL and get the coordinates of the location you entered
-  
-      };
+      //delete markers on map if there are any
+      if (markers[0] != null){
+        deleteMarker(0);
+        deleteMarker(1);
+      }
+    
+    });
