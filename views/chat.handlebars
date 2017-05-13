@@ -1,18 +1,35 @@
-   
-    <div class="container text-center">
-    <h1 id="info">Chat Room</h1>
-    <div class="row">
-    <div class="col-sm-push-3 col-sm-6 text-center" id="chatbox">
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-    </div>
-    </div>
+  <style>
+    html, body {
+      background-color: #FFEF1C;
+      height: 100% !important;
+    }
+    footer {
+      width: 100%;
+      display: inline-flex;
+      margin-top: 20px;
+    }
+    #footer {
+      padding-left: 480px;
+    }
+    #main {
+      display: block;
+    }
+  </style>
+
+    <div class="container text-center" id="main">
+      <h1 id="info">Chat Room</h1>
+      <div class="row">
+        <div class="col-sm-push-3 col-sm-6 text-center" id="chatbox" style="display: ">
+          <ul id="messages"></ul>
+            <form action="">
+              <input id="m" autocomplete="off" /><button>Send</button>
+            </form>
+        </div>
+      </div>
     </div>
 
 <footer>
-	<p class="text-center">© Copyright StudyBuddy 2017</p>
+	<p class="text-center" id="footer">© Copyright StudyBuddy 2017</p>
 </footer>
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <!-- Firebase script -->
