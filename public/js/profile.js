@@ -44,6 +44,7 @@ $(document).ready(function() {
         }
         else {
             console.log("profile data: " + data);
+            $('#profile').html(data.firstName + "'s Profile Page");
             fullName.html(data.firstName + " " + data.lastName);
             userEmail.html(data.email);
             $('#profilePhoto').html("<img src='"+ data.photoURL +"' style='width:200px;'>");
