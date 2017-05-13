@@ -1,4 +1,0 @@
-INSERT INTO buddies (firstName, lastName, state, city, age, phoneNumber, gender, school, AOE) VALUES ('Kevin', 'Lee', 'NJ', 'Somerset', '24', '(973)-123-4567', 'male', 'Rutgers New-Brunswick', 'Web Development');
-INSERT INTO buddies (firstName, lastName, state, city, age, phoneNumber, gender, school, AOE) VALUES ('Carlton', 'Hurdle', 'NJ', 'Highland Park', '30', '(973)-987-6543', 'male', 'Rutgers New-Brunswick', 'Web Development');
-INSERT INTO buddies (firstName, lastName, state, city, age, phoneNumber, gender, school, AOE) VALUES ('Patrick', 'Powers', 'NJ', 'Somerset', '24', '(973)-555-4567', 'male', 'Rutgers New-Brunswick', 'Web Development');
-INSERT INTO buddies (firstName, lastName, state, city, age, phoneNumber, gender, school, AOE) VALUES ('Ralph', 'Manlapig', 'NJ', 'Edison', '24', '(973)-111-5555', 'male', 'Rutgers New-Brunswick', 'Web Development');
