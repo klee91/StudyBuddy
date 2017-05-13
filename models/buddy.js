@@ -50,11 +50,11 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     zipcode: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isNumeric: true, 
-        len: [5]
+        len: [5,10]
       }
     },
     age: {

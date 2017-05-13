@@ -103,6 +103,7 @@ auth.onAuthStateChanged(function(user) {
   // Sets a flag for whether or not we're updating info to be false initially
   var updating = true;
 
+
 // A function for handling what happens when the form to create a new post is submitted
   function handleFormUpdate(event) {
     // Wont submit the post if we are missing a body, title, or author

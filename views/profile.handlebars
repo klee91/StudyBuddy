@@ -1,3 +1,12 @@
+<style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+       #location-input{
+        color: black;
+       }
+    </style>
 
 <link rel="stylesheet" href="../public/assets/css/profile.css">
 
@@ -15,7 +24,7 @@
 						<label for="email">Email:</label>
 						<p  id="email" name="email"> </p>
 						<br />
-						<label for="photo">Profile Pic:</label>
+						<label for="photo">Profile Picture: </label>
 						<div id="profilePhoto"></div>
             <label for="city">City:</label>
 						<p  id="city" name="city"> </p>
@@ -43,7 +52,8 @@
 						<label for="study">Study Subject:</label>
 						<p id="study" name="study">  </p>
 						<br />
-						<div id="map" style="width: 100%; height: 250px; background-color: grey;"></div>
+						 <div id="map"></div>
+						{{!-- <div id="map" style="width: 100%; height: 250px; background-color: grey;"></div> --}}
 				</div>
 			</div>
 		</div>
@@ -52,19 +62,20 @@
 <footer>
 	<p class="text-center" id="footer">© Copyright StudyBuddy 2017</p>
 </footer>
-<script src="js/profile.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!--Google Maps API-->
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW2o4eNFsg0_fT_HlvmwSjNqxpfQrOjB8&callback=initMap">
-</script>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- Firebase script -->
 <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
 <script src="js/app.js"></script>
 <script>
+
 var widget = $('.circlemenu');
 
 $('.menu-item').on('click', function(){
 	
 })
 </script>
+
