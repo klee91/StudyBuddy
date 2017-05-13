@@ -32,7 +32,7 @@ $(document).on('click','#btnLogin', function(event) {
         var errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
-        window.alert("Sign In Error");
+        window.alert("Sign In Error. Please input correct username/password");
     });
 
     $('#loginEmail').val('');

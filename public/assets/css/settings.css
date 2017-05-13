@@ -4,13 +4,17 @@
 }
 
 body {
-	background-color: #f91111;
+	background-color: #8E44AD;
 }
 
-#foot {
+footer {
+	width: 100%;
 	display: inline-flex;
-	margin-left: 40%;
 	margin-top: 20px;
+}
+
+#footer {
+	padding-left: 480px;
 }
 
 #editForm {
@@ -18,4 +22,5 @@ body {
 	border-radius: 8px;
 	padding: 12px;
 	margin-top: 20px;
+	box-shadow: 0 0 10px #000;
 }

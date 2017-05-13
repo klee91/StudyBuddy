@@ -1,16 +1,25 @@
+
+
 body {
-	background-color: #1e59ff;
+	background-color: #F5F5F5;	
 }
 
 .jumbotron {
-	color: #1effe5;
-	background-color: #f9e495;	
+	margin-top: 1%;
+	color: white;
+	background-color: #EB5E00;
 }
 
 #loginEmail {
 	color: black;
+	border-radius: 3px;
 }
 
 #loginPassword {
 	color: black;
+	border-radius: 3px;
+}
+
+h3 {
+	font-family: 'Raleway', sans-serif;
 }

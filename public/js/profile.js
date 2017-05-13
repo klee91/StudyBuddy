@@ -39,9 +39,11 @@ $(document).ready(function() {
   function getcurrentUser(email) {
     
     $.get("/api/buddies/" + email, function(data) {
+
         if (data) {
 
              console.log("profile data: " + data);
+          $('#profile').html(data.firstName + "'s Profile Page")
             fullName.html(data.firstName + " " + data.lastName);
             userEmail.html(data.email);
 

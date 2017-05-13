@@ -78,6 +78,14 @@ auth.onAuthStateChanged(function(user) {
   var emailParam;
   var buddyId;
 
+    // Creates the buddy options in the dropdown
+  function createRow(item) {
+    var listOption = $("<option>");
+    listOption.attr("value", item);
+    listOption.text(item);
+    return listOption;
+  }
+
   //function to create dropdown lists
   function createDropDown(arrayName, list){
 
@@ -118,7 +126,7 @@ auth.onAuthStateChanged(function(user) {
       photoURL: photoURL.val().trim(),
       state: stateSelect.val().trim(),
       city: cityInput.val().trim(),
-      zipcode: zipCode.val().trim(),
+      zipcode: zipCode.val(),
       age: ageInput.val().trim(),
       phoneNumber: phoneInput.val().trim(),
       gender: genderSelect.val().trim(),
@@ -137,6 +145,7 @@ auth.onAuthStateChanged(function(user) {
     $(document).on("click","#btnUpdate", function(event){
       event.preventDefault();
       handleFormUpdate();
+      location.reload();
     });
 
   // Getting buddy data by email
@@ -154,14 +163,6 @@ auth.onAuthStateChanged(function(user) {
             console.log("data: " + data);
         }
     })
-  }
-
-  // Creates the buddy options in the dropdown
-  function createRow(item) {
-    var listOption = $("<option>");
-    listOption.attr("value", item);
-    listOption.text(item);
-    return listOption;
   }
     // zip code validator
     function validateZIP(field) {

@@ -11,7 +11,7 @@
         <div>Name: <p id="modalBudName"></p></div>
         <div>Expertise: <p id="modalBudAOS"></p></div>
         <div>Email: <p id="modalBudEmail"></p></div>
-				<div>Location: <p id="modalBudLocation"></p></div>
+		<div>Location: <p id="modalBudLocation"></p></div>
         <button id="gotoProfile">See their Profile</button>
     </div>
     </div>
@@ -29,20 +29,22 @@
             </div>
         </form>
 
-        <button type="submit" id="buddySubmitBtn">Submit</button>
+        <button type="submit" class="btn btn-lg" id="buddySubmitBtn">Submit</button>
     </div>
     </div>
 
-<h1 class="container col-xs-8 col-xs-offset-2" id="yourBuddy">Your Buddies</h1>
 <div class="container col-xs-8 col-xs-offset-2" id="main">
-    <div id="listDiv" class="container col-xs-8 col-xs-offset-2">
+    <h1 class="container col-xs-8 col-xs-offset-2" id="yourBuddy">Your Buddies</h1>
+    <div id="listDiv" class="container col-xs-6 col-xs-offset-3">
             <ul id="list">
             </ul>
     </div>
 </div>
-<footer>
-	<p class="text-center">© Copyright StudyBuddy 2017</p>
+
+<footer id="foot">
+	<p class="text-center" id="footertxt">© Copyright StudyBuddy 2017</p>
 </footer>
+
 	<!-- Firebase script -->
 <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
 <script src="js/app.js" type="text/javascript"></script>

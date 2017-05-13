@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The Buddifier</title>
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="../../public/assets/css/style.css" type="text/css">
     <!-- jQuery lib -->
     <script
     src="http://code.jquery.com/jquery-3.2.1.min.js"
@@ -16,11 +16,20 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <style>
+* {
+  margin: 0;
+}
+body {
+  height: 100%;
+	background-color: #F39C12;
+}
 p {
     font-size: 10pt;
 }
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -36,7 +45,9 @@ p {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fff959;
+    background-color: #0288D1;
+		color: white;
+		font-family: 'Raleway', sans-serif;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
@@ -61,8 +72,8 @@ p {
 #main {
     background-color: #EEEEEE;
     border-radius: 5px;
-    display: inline-block;
     margin-bottom: 5%;
+		box-shadow: 0 0 10px #888888;
 }
 #list {
     position: relative;
@@ -72,16 +83,25 @@ p {
     height:50%;
     background-color: #FFFFFF;
     border-radius: 5px;
-    margin: 5px;
+    margin: 5px !important;
     padding: 10px;
     list-style-type: none;
+		display: block;
+    margin: 0 auto;
 }
 li {
     list-style-type: none;
 }
+#buddySubmitBtn {
+	background-color: #F39C12;
+	color: #303030;
+	border-radius: 4px;
+
+}
 .prof-imgs {
-    height: 100%;
     width: 200px;
+		display: block;
+    margin: 0 auto;
 }
 .menu-btn {
 	z-index: 1;
@@ -151,7 +171,23 @@ li {
     -ms-transform: rotate(146deg);
     transform: rotate(146deg);
   }
-  
+
+#foot {
+	width: 100% !important;
+	display: inline-flex;
+	margin-top: 20px;
+	background-color: #7D7D7D;
+	border-top: solid 2px #303030;
+	height: 80px;
+	padding: 35px;
+}
+
+#footertxt {
+	display: inline-block;
+	padding: 0;
+	margin: auto;
+	text-align: center !important;
+}
 </style>
 <body>
 		<!--backdrop when first modal is up -->

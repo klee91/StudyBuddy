@@ -4,7 +4,7 @@
 }
 
 body {
-	background-color: #52f29a;
+	background-color: #1ABC9C;
 }
 
 #profileDiv {
@@ -12,10 +12,15 @@ body {
 	border-radius: 6px;
 	margin-top: 40px;
 	padding-top: 10px;
+	box-shadow: 0 0 10px #888888;
+}
+
+footer {
+	width: 100%;
+	display:inline-flex;
+	margin-top: 18px;
 }
 
 #footer {
-	display:inline-flex;
-	margin-left: 45%;
-	margin-top: 18px;
+	padding-left: 480px;
 }
