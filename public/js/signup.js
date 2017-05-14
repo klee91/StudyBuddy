@@ -1,7 +1,7 @@
 
 
 $(document).ready(function() {
-  // Getting jQuery references to the post body, title, form, and author select
+  // Getting jQuery references to the buddy info
   var firstInput = $("#firstname");
   var lastInput = $("#lastname");
   var emailInput = $("#loginEmail");
@@ -33,7 +33,7 @@ $(document).ready(function() {
 
   createDropDown(studySubs, studySelect);
 
-  // Creates the author options in the dropdown
+  // Creates the options in the dropdown
   function createRow(item) {
     var listOption = $("<option>");
     listOption.attr("value", item);
@@ -42,7 +42,7 @@ $(document).ready(function() {
   }
 
   $(signupForm).on("#btnSignup", handleFormSubmit);
-  // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
+
   $(document).on("click","#btnSignup", function(event){
     event.preventDefault();
     handleFormSubmit();
@@ -52,13 +52,11 @@ $(document).ready(function() {
   var url = window.location.search;
   var queryUrl;
 
-  // Sets a flag for whether or not we're updating a post to be false initially
-  var updating = false;
 
-  // A function for handling what happens when the form to create a new post is submitted
+  // A function for handling what happens when the form to create a new buddy
   function handleFormSubmit(event) {
     
-    // Wont submit the post if we are missing a body, title, or author
+    // Wont submit the post if we are missing the first name, last name, or gender
     if (!firstInput.val().trim() || !lastInput.val().trim() || !genderSelect.val()) {
       return;
     }
@@ -104,21 +102,15 @@ $(document).ready(function() {
       study_subject: studySelect.val()
     };
 
-    // If we're updating a post run updatePost to update a post
-    // Otherwise run submitPost to create a whole new post
-    if (updating) {
-      newPost.id = postId;
-      updatePost(newBuddy);
-    }
-    else {
+      //Submitting buddy info into the database
       submitBuddy(newBuddy);
-    }
-  }
 
-  // Submits a new post and brings user to blog page upon completion
+  };
+
+  // Submits a new buddy and brings user to profile page upon completion
   function submitBuddy(buddy) {
     $.post("/api/buddies", buddy, function() {
-      window.location.href = "/settings";
+      window.location.href = "/profile?=" + buddy.email;
 
     });
   }
@@ -163,15 +155,4 @@ $(document).ready(function() {
       return true;
     }
 
-  // Update a given post, bring user to the blog page when done
-  function updatePost(post) {
-    $.ajax({
-      method: "PUT",
-      url: "/api/posts",
-      data: post
-    })
-    .done(function() {
-      window.location.href = "/blog";
-    });
-  }
 });
