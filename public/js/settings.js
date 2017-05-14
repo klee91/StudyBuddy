@@ -30,7 +30,7 @@ auth.onAuthStateChanged(function(user) {
         $.get(queryUrl, function(data) {
             console.log(data);
 
-        // If this post exists, prefill our cms forms with its data
+        // If this buddy exists, prefill our cms forms with its data
         firstInput.val(data.firstName);
         lastInput.val(data.lastName);
         emailInput.val(data.email);
@@ -78,7 +78,7 @@ auth.onAuthStateChanged(function(user) {
   var emailParam;
   var buddyId;
 
-    // Creates the buddy options in the dropdown
+    // Creates the options in a dropdown
   function createRow(item) {
     var listOption = $("<option>");
     listOption.attr("value", item);
@@ -104,10 +104,11 @@ auth.onAuthStateChanged(function(user) {
   var updating = true;
 
 
-// A function for handling what happens when the form to create a new post is submitted
+// A function for handling what happens when the form to create a new buddy is submitted
   function handleFormUpdate(event) {
     // Wont submit the post if we are missing a body, title, or author
     if (!firstInput.val().trim() || !emailInput.val().trim() || !passInput.val()) {
+      window.alert("Missing parameters");
       return;
     }
     
@@ -117,7 +118,7 @@ auth.onAuthStateChanged(function(user) {
       return ;
     }
 
-    // Constructing a newBuddyInfo object to hand to the database
+    // Constructing a newBuddy object to hand to the database
     var newBuddy = {
       firstName: firstInput.val().trim(),
       lastName: lastInput.val().trim(),
@@ -188,6 +189,7 @@ auth.onAuthStateChanged(function(user) {
       return true;
     }
 
+    //function to update the information of the buddy in the SQL database
     function updateBuddy(buddy) {
       var queryUrl = "/api/buddies/" + currentid;
       $.ajax({

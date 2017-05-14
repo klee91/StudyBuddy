@@ -24,7 +24,7 @@ $(document).on('click','#btnLogin', function(event) {
         email: $('#loginEmail').val().trim(),
         password: $('#loginPassword').val().trim()
     };
-    // location.reload();
+    
     //Sign In Function
     auth.signInWithEmailAndPassword(user.email, user.password).catch(function(error) {
         // Error Handling
@@ -37,6 +37,7 @@ $(document).on('click','#btnLogin', function(event) {
 
     $('#loginEmail').val('');
     $('#loginPassword').val('');
+    window.location.href = "/profile?=" + user.email;
 });
 
 //signup button event
