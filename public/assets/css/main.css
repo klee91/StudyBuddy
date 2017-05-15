@@ -1,13 +1,17 @@
-
+html {
+	min-height: 100%;
+	position: relative;
+}
 
 body {
-	background-color: #F5F5F5;	
+	background-color: #F5F5F5;
 }
 
 .jumbotron {
 	margin-top: 1%;
 	color: white;
 	background-color: #EB5E00;
+	margin-bottom: 15%;
 }
 
 #loginEmail {

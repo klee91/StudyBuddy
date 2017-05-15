@@ -18,9 +18,12 @@ body {
 footer {
 	width: 100%;
 	display:inline-flex;
-	margin-top: 18px;
+	margin-top: 20px;
+	padding: auto;
+	padding-left: 650px;
 }
 
 #footer {
-	padding-left: 480px;
+	text-align: center;
+	display: block;
 }

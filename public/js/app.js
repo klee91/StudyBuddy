@@ -58,6 +58,8 @@ $(document).on('click','#btnSignup', function(event) {
         console.log(errorCode);
         console.log(errorMessage);
     });
+    window.location.href = "/";
+    
 });
 
 //logout button event
